@@ -18,7 +18,6 @@
 
     .page-shell{
       width:100%; min-height:100%; overflow:hidden; position:relative;
-      /* Background menggunakan gambar Pinterest Anda dengan efek transparan/overlay agar teks tetap terbaca jelas */
       background: 
         linear-gradient(rgba(34, 26, 22, 0.75), rgba(44, 76, 49, 0.75)),
         url("https://i.pinimg.com/736x/eb/62/29/eb62295c9030c154529ef13da5a75244.jpg");
@@ -83,7 +82,7 @@
     .sunda-button:disabled{opacity:.52;cursor:not-allowed;transform:none}
     
     .count-box{min-width:67px;padding:13px 8px;border:1px solid rgba(44,76,49,.35);background:rgba(255,253,249,.9)}
-    .gallery-item{overflow:hidden;position:relative;background:#c8b89d;cursor:pointer;border-radius:4px}
+    .gallery-item{overflow:hidden;position:relative;background:#c8b89d;cursor:pointer;border-radius:4px;width:100%}
     .gallery-item:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 45%,rgba(44,76,49,.5))}
     .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease}
     .gallery-item:hover img,.gallery-item:focus-visible img{transform:scale(1.08)}
@@ -104,7 +103,6 @@
 </head>
 <body>
 
-  <!-- Audio Background Elemen Standar HTML (Otomatis Loop) -->
   <audio id="bgMusic" loop preload="auto">
     <source src="https://files.catbox.moe/kx8v3o.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -113,12 +111,11 @@
   <div class="page-shell">
    <div class="content-layer">
     
-    <!-- Widget Pembuat Link Khusus Pemilik Website -->
     <div id="adminLinkBuilder" style="background: rgba(44, 76, 49, 0.96); color: #fffdf9; padding: 12px 20px; text-align: center; font-size: 13px; border-bottom: 1px solid rgba(194, 155, 83, 0.5); position: relative; z-index: 65;">
       <div style="max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px;">
-        <span style="font-weight: 600; letter-spacing: 0.05em; font-size: 11px; text-transform: uppercase; color: #dfca97;">⚙️ Buat Link Khusus Nama Tamu</span>
+        <span style="font-weight: 600; letter-spacing: 0.05em; font-size: 11px; text-transform: uppercase; color: #dfca97;">⚙️ Jieun Link Husus Nami Tamu</span>
         <div style="display: flex; gap: 6px;">
-          <input id="customGuestInput" type="text" placeholder="Ketik nama tamu di sini..." style="flex: 1; padding: 8px 12px; border-radius: 4px; border: none; font-size: 13px; color: #221a16;" />
+          <input id="customGuestInput" type="text" placeholder="Ketik nami tamu di dieu..." style="flex: 1; padding: 8px 12px; border-radius: 4px; border: none; font-size: 13px; color: #221a16;" />
           <button id="copyCustomLinkBtn" type="button" style="background: #c29b53; color: #fff; border: none; padding: 8px 14px; border-radius: 4px; font-weight: 600; cursor: pointer; white-space: nowrap;">Salin Link</button>
         </div>
         <span id="copyLinkStatus" style="font-size: 11px; color: #dfca97; min-height: 16px;"></span>
@@ -131,13 +128,13 @@
        <div class="ornament-crown" aria-hidden="true">
         ᮅᮜᮦᮙᮔ᮪ ᮕᮨᮁᮔᮤᮊᮠᮔ᮪
        </div>
-       <p class="mt-4 text-xs font-semibold uppercase tracking-[.25em]" style="color: rgb(76, 109, 83);">Undangan Pernikahan</p>
+       <p class="mt-4 text-xs font-semibold uppercase tracking-[.25em]" style="color: rgb(76, 109, 83);">Uleman Pernikahan</p>
        <h1 id="envelope-title" class="title-font mt-3 leading-none" style="color: rgb(44, 76, 49); font-size: 48px;">Yogas &amp; Novi</h1>
        <div class="batik-line mt-5"><span aria-hidden="true">❖</span></div>
        <p id="guestGreeting" class="mt-6 max-w-sm text-center text-sm leading-relaxed text-[#2c4c31] font-medium"></p>
-       <label class="mt-6 block w-full text-left text-xs font-semibold uppercase tracking-[.15em]" for="guestName" style="color: rgb(44, 76, 49);">Nama Tamu</label> 
+       <label class="mt-6 block w-full text-left text-xs font-semibold uppercase tracking-[.15em]" for="guestName" style="color: rgb(44, 76, 49);">Nami Tamu</label> 
        <input id="guestName" class="form-field mt-2 text-center" type="text" maxlength="80" autocomplete="name"> 
-       <button id="openInvitation" type="button" class="sunda-button mt-6 rounded-full px-7 py-3 text-sm font-semibold">Buka Undangan</button>
+       <button id="openInvitation" type="button" class="sunda-button mt-6 rounded-full px-7 py-3 text-sm font-semibold">Buka Uleman</button>
       </div>
      </div>
     </div>
@@ -147,12 +144,12 @@
       <div class="ornament-crown" aria-hidden="true">
        ᮚᮧᮌᮞ᮪ ᮓᮔ᮪ ᮔᮧᮗᮤ
       </div>
-      <p class="mt-5 text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">The Wedding of</p>
+      <p class="mt-5 text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Pernikahan Yogas &amp; Novi</p>
       <div class="batik-line mt-5"><span aria-hidden="true">❖</span></div>
       <h2 class="title-font mt-7 text-white" style="font-size: 72px; text-shadow: 0 2px 4px rgba(0,0,0,0.4);">Yogas &amp; Novi</h2>
-      <p class="mt-4 text-sm font-semibold uppercase tracking-[.16em]" style="color: rgb(223, 202, 151);">Minggu, 13 Desember 2026</p>
+      <p class="mt-4 text-sm font-semibold uppercase tracking-[.16em]" style="color: rgb(223, 202, 151);">Minggu, 13 Désémber 2026</p>
       <blockquote class="mx-auto mt-10 max-w-xl border-y border-[#dfca97]/60 py-7">
-       <p class="display-font text-sm leading-7 text-white" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3);">“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.”</p>
+       <p class="display-font text-sm leading-7 text-white" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3);">“Sareng di antawis tanda-tanda kakawasaan-Anjeunna, Anjeunna parantos nyiptakeun pasangan-pasangan kanggo maranéh tina bangsa maranéh sorangan, supados maranéh ngarasa tengtrem ka manéhna, sareng Anjeunna parantos ngajantenkeun di antawis maranéh rasa cinta tur nyaah.”</p>
        <cite class="mt-4 block text-xs not-italic uppercase tracking-[.2em]" style="color: rgb(223, 202, 151);">QS. Ar-Rum: 21</cite>
       </blockquote>
      </div>
@@ -162,50 +159,49 @@
      <section class="px-5 pb-20 pt-20">
       <div class="sunda-frame mx-auto max-w-3xl px-5 py-10 text-center sm:px-10">
        <div class="sunda-mark text-xl" aria-hidden="true">ᮠᮤᮕᮩᮜ᮪ ᮃᮊ᮪ᮞᮛ</div>
-       <p class="mt-3 text-xs font-semibold uppercase tracking-[.24em]" style="color: rgb(76, 109, 83);">Menuju Hari Bahagia</p>
-       <h2 class="display-font mt-3" style="color: rgb(44, 76, 49); font-size: 21px;">Menghitung Hari Bersama</h2>
+       <p class="mt-3 text-xs font-semibold uppercase tracking-[.24em]" style="color: rgb(76, 109, 83);">Nuju Dinten Bagja</p>
+       <h2 class="display-font mt-3" style="color: rgb(44, 76, 49); font-size: 21px;">Ngitung Dinten Babarengan</h2>
        <div id="countdown" class="mt-8 flex justify-center gap-2 sm:gap-4" aria-live="polite">
-        <div class="count-box"><strong id="days" class="block text-2xl text-[#2c4c31]">0</strong><span class="text-[10px] uppercase tracking-wider font-semibold" style="color: rgb(76, 109, 83);">Hari</span></div>
-        <div class="count-box"><strong id="hours" class="block text-2xl text-[#2c4c31]">0</strong><span class="text-[10px] uppercase tracking-wider font-semibold" style="color: rgb(76, 109, 83);">Jam</span></div>
-        <div class="count-box"><strong id="minutes" class="block text-2xl text-[#2c4c31]">0</strong><span class="text-[10px] uppercase tracking-wider font-semibold" style="color: rgb(76, 109, 83);">Menit</span></div>
+        <div class="count-box"><strong id="days" class="block text-2xl text-[#2c4c31]">0</strong><span class="text-[10px] uppercase tracking-wider font-semibold" style="color: rgb(76, 109, 83);">Dinten</span></div>
+        <div class="count-box"><strong id="hours" class="block text-2xl text-[#2c4c31]">0</strong><span class="text-[10px] uppercase tracking-wider font-semibold" style="color: rgb(76, 109, 83);">Tabuh</span></div>
+        <div class="count-box"><strong id="minutes" class="block text-2xl text-[#2c4c31]">0</strong><span class="text-[10px] uppercase tracking-wider font-semibold" style="color: rgb(76, 109, 83);">Mésem</span></div>
         <div class="count-box"><strong id="seconds" class="block text-2xl text-[#2c4c31]">0</strong><span class="text-[10px] uppercase tracking-wider font-semibold" style="color: rgb(76, 109, 83);">Detik</span></div>
        </div>
-       <p id="countdownComplete" class="mt-5 hidden text-sm font-semibold" style="color: rgb(44, 76, 49);">Hari bahagia telah tiba. Kami menantikan kehadiran Anda.</p>
+       <p id="countdownComplete" class="mt-5 hidden text-sm font-semibold" style="color: rgb(44, 76, 49);">Dinten bagja parantos tiba. Sim kuring ngantos kasumpingan Anjeun.</p>
       </div>
      </section>
 
      <section class="px-5 pb-20">
       <div class="mx-auto max-w-5xl text-center">
-       <p class="text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Dengan Penuh Rasa Syukur</p>
-       <h2 class="display-font mt-3 text-white" style="font-size: 21px; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">Mempelai</h2>
+       <p class="text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Kagungan Rasa Syukur</p>
+       <h2 class="display-font mt-3 text-white" style="font-size: 21px; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">Panganten</h2>
        <div class="mt-10 grid gap-6 md:grid-cols-2">
         <article class="sunda-frame px-7 py-10" style="background: rgba(255,253,249,.95);">
          <h3 class="title-font mt-3" style="color: rgb(44, 76, 49); font-size: 42px;">Yogaswara</h3>
-         <p class="mt-2 text-sm font-semibold" style="color: rgb(194, 155, 83);">Putra Pertama</p>
-         <p class="mt-5 text-sm leading-7" style="color: rgb(34, 26, 22);">Putra dari Bapak Eman S dan Ibu tercinta (Alm) Entang SH</p>
+         <p class="mt-2 text-sm font-semibold" style="color: rgb(194, 155, 83);">Putra Kahiji</p>
+         <p class="mt-5 text-sm leading-7" style="color: rgb(34, 26, 22);">Putra ti Bapa Eman S sareng Ibu Entang sri Hayati (Almh.)</p>
         </article>
         <article class="sunda-frame px-7 py-10" style="background: rgba(255,253,249,.95);">
          <h3 class="title-font mt-3" style="color: rgb(44, 76, 49); font-size: 42px;">Novi Erlinda</h3>
          <p class="mt-2 text-sm font-semibold" style="color: rgb(194, 155, 83);">Putri Tercinta</p>
-         <p class="mt-5 text-sm leading-7" style="color: rgb(34, 26, 22);">Putri dari Bapak Sahroni dan Ibu tercinta Dedeh Parida</p>
+         <p class="mt-5 text-sm leading-7" style="color: rgb(34, 26, 22);">Putri ti Bapa Syahroni sareng Ibu tercinta Dedeh Parida</p>
         </article>
        </div>
       </div>
      </section>
 
-     <!-- Rangkaian Acara -->
      <section class="carving-border px-5 py-20 text-white">
       <div class="mx-auto max-w-3xl">
        <div class="text-center">
-        <p class="text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Rangkaian Acara</p>
-        <h2 class="display-font mt-3 text-white" style="font-size: 21px; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">Save the Date</h2>
+        <p class="text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Runtuyan Acara</p>
+        <h2 class="display-font mt-3 text-white" style="font-size: 21px; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">Jadwal Acara</h2>
        </div>
        <div class="mt-10">
         <article class="sunda-frame p-8 text-center" style="background: rgba(255,253,249,.96);">
          <i data-lucide="heart-handshake" class="mx-auto h-7 w-7 text-[#c29b53]" aria-hidden="true"></i>
-         <h3 class="display-font mt-5" style="color: rgb(44, 76, 49); font-size: 18px;">Akad Nikah &amp; Resepsi</h3>
-         <p class="mt-4 text-sm font-semibold leading-7" style="color: rgb(44, 76, 49);">Minggu, 13 Desember 2026</p>
-         <p class="mt-3 text-sm leading-7" style="color: rgb(34, 26, 22);">Belakang SDN Tunas Jaya No.41256, Sukahaji, Kec. Ciasem, Kabupaten Subang, Jawa Barat 41256</p>
+         <h3 class="display-font mt-5" style="color: rgb(44, 76, 49); font-size: 18px;">Akad Nikah &amp; Résepsi</h3>
+         <p class="mt-4 text-sm font-semibold leading-7" style="color: rgb(44, 76, 49);">Minggu, 13 Désémber 2026</p>
+         <p class="mt-3 text-sm leading-7" style="color: rgb(34, 26, 22);">Pengker SDN Tunas Jaya No.41256, Sukahaji, Kac. Ciasem, Kabupatén Subang, Jawa Barat 41256</p>
          <button id="mapButton" type="button" class="sunda-button mt-7 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">
            <i data-lucide="map-pin" class="h-4 w-4"></i><span>Buka di Google Maps</span>
          </button>
@@ -215,43 +211,44 @@
      </section>
 
      <section class="px-5 py-20">
-      <div class="mx-auto max-w-5xl">
-       <div class="text-center">
-        <p class="text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Sepenggal Kisah</p>
-        <h2 class="display-font mt-3 text-white" style="font-size: 21px; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">Galeri Cinta</h2>
-       </div>
-       <div id="galleryGrid" class="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3">
-        <button type="button" class="gallery-item aspect-[4/5]" data-gallery-index="0"><img loading="lazy" src="https://images.pexels.com/photos/1045541/pexels-photo-1045541.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Galeri 1"></button> 
-        <button type="button" class="gallery-item aspect-[4/5]" data-gallery-index="1"><img loading="lazy" src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Galeri 2"></button> 
-        <button type="button" class="gallery-item aspect-[4/5]" data-gallery-index="2"><img loading="lazy" src="https://images.pexels.com/photos/1114425/pexels-photo-1114425.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Galeri 3"></button> 
-        <button type="button" class="gallery-item aspect-[4/5]" data-gallery-index="3"><img loading="lazy" src="https://images.pexels.com/photos/36069125/pexels-photo-36069125.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Galeri 4"></button> 
-        <button type="button" class="gallery-item aspect-[4/5]" data-gallery-index="4"><img loading="lazy" src="https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Galeri 5"></button> 
-        <button type="button" class="gallery-item aspect-[4/5]" data-gallery-index="5"><img loading="lazy" src="https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Galeri 6"></button>
+      <div class="mx-auto max-w-3xl">
+       <div id="galleryGrid">
+        <button type="button" class="gallery-item aspect-[16/9] mx-auto max-w-xl" data-gallery-index="0"><img loading="lazy" src="https://i.ibb.co.com/6hP1L34/178798.png" alt="Galeri Utama"></button> 
        </div>
       </div>
      </section>
 
      <section class="carving-border px-5 py-20 text-white">
       <div class="mx-auto max-w-3xl text-center">
-       <p class="text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Tanda Kasih</p>
+       <p class="text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Tanda Kadeudeuh</p>
        <h2 class="display-font mt-3 text-white" style="font-size: 21px; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">Amplop Digital</h2>
-       <p class="mx-auto mt-5 max-w-xl text-sm leading-7 text-white" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3);">Doa restu Anda adalah hadiah terindah. Apabila berkenan memberikan tanda kasih, informasi berikut dapat digunakan.</p>
-       <div class="mx-auto mt-8 grid max-w-2xl gap-5 sm:grid-cols-2">
+       <p class="mx-auto mt-5 max-w-xl text-sm leading-7 text-white" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3);">Doa restu Anjeun mangrupikeun kado anu pangéndahna. Upami kersa masihan tanda kadeudeuh, inpormasi ieu tiasa dianggo.</p>
+       <div class="mx-auto mt-8 grid max-w-xl gap-5">
         <article class="sunda-frame p-7" style="background: rgba(255,253,249,.96);">
          <i data-lucide="gift" class="mx-auto h-7 w-7 text-[#c29b53]"></i>
          <p class="mt-5 text-xs font-semibold uppercase tracking-[.2em]" style="color: rgb(76, 109, 83);">BCA</p>
          <p class="mt-3 text-sm font-medium" style="color: rgb(44, 76, 49);">a/n Yogaswara</p>
          <p id="accountNumberYogas" class="display-font mt-3 break-all" style="color: rgb(44, 76, 49); font-size: 18px;">1091929355</p>
-         <button id="copyAccountYogas" type="button" class="mt-6 rounded-full px-5 py-3 text-sm font-semibold" style="background: rgb(223, 202, 151); color: rgb(44, 76, 49);">Salin Nomor Rekening</button>
+         <button id="copyAccountYogas" type="button" class="mt-6 rounded-full px-5 py-3 text-sm font-semibold" style="background: rgb(223, 202, 151); color: rgb(44, 76, 49);">Salin Nomer Rékening</button>
          <p id="copyStatusYogas" class="status mt-3 text-xs font-semibold text-[#2c4c31]"></p>
         </article>
+        
         <article class="sunda-frame p-7" style="background: rgba(255,253,249,.96);">
          <i data-lucide="gift" class="mx-auto h-7 w-7 text-[#c29b53]"></i>
          <p class="mt-5 text-xs font-semibold uppercase tracking-[.2em]" style="color: rgb(76, 109, 83);">BCA</p>
          <p class="mt-3 text-sm font-medium" style="color: rgb(44, 76, 49);">a/n Novi Erlinda</p>
-         <p id="accountNumberNovi" class="display-font mt-3 break-all" style="color: rgb(44, 76, 49); font-size: 18px;">3780339887</p>
-         <button id="copyAccountNovi" type="button" class="mt-6 rounded-full px-5 py-3 text-sm font-semibold" style="background: rgb(223, 202, 151); color: rgb(44, 76, 49);">Salin Nomor Rekening</button>
-         <p id="copyStatusNovi" class="status mt-3 text-xs font-semibold text-[#2c4c31]"></p>
+         <p id="accountNumberNoviBca" class="display-font mt-3 break-all" style="color: rgb(44, 76, 49); font-size: 18px;">3780339887</p>
+         <button id="copyAccountNoviBca" type="button" class="mt-6 rounded-full px-5 py-3 text-sm font-semibold" style="background: rgb(223, 202, 151); color: rgb(44, 76, 49);">Salin Nomer Rékening</button>
+         <p id="copyStatusNoviBca" class="status mt-3 text-xs font-semibold text-[#2c4c31]"></p>
+        </article>
+
+        <article class="sunda-frame p-7" style="background: rgba(255,253,249,.96);">
+         <i data-lucide="gift" class="mx-auto h-7 w-7 text-[#c29b53]"></i>
+         <p class="mt-5 text-xs font-semibold uppercase tracking-[.2em]" style="color: rgb(76, 109, 83);">Bank Mandiri</p>
+         <p class="mt-3 text-sm font-medium" style="color: rgb(44, 76, 49);">a/n Novi Erlinda</p>
+         <p id="accountNumberNoviMandiri" class="display-font mt-3 break-all" style="color: rgb(44, 76, 49); font-size: 18px;">1730022829148</p>
+         <button id="copyAccountNoviMandiri" type="button" class="mt-6 rounded-full px-5 py-3 text-sm font-semibold" style="background: rgb(223, 202, 151); color: rgb(44, 76, 49);">Salin Nomer Rékening</button>
+         <p id="copyStatusNoviMandiri" class="status mt-3 text-xs font-semibold text-[#2c4c31]"></p>
         </article>
        </div>
        <button id="giftWhatsAppButton" type="button" class="sunda-button mt-5 inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold">
@@ -263,18 +260,15 @@
 
     <footer class="carving-border px-5 py-8 text-center text-white">
      <div class="ornament-crown" aria-hidden="true">❖</div>
-     <p class="mt-5 text-xs font-medium text-[#dfca97]">© 2026 Yogas &amp; Novi · Dengan penuh rasa syukur.</p>
+     <p class="mt-5 text-xs font-medium text-[#dfca97]">© 2026 Yogas &amp; Novi · Kalayan pinuh rasa syukur.</p>
     </footer>
    </div>
   </div>
 
-  <!-- Lightbox Modal -->
   <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Galeri foto" aria-hidden="true">
    <figure class="lightbox-figure">
     <button id="closeLightbox" class="lightbox-close" type="button"><i data-lucide="x" class="h-5 w-5"></i></button> 
     <img id="lightboxImage" class="lightbox-image" alt=""> 
-    <button id="previousImage" class="lightbox-control lightbox-prev" type="button"><i data-lucide="chevron-left" class="h-6 w-6"></i></button> 
-    <button id="nextImage" class="lightbox-control lightbox-next" type="button"><i data-lucide="chevron-right" class="h-6 w-6"></i></button>
     <figcaption id="lightboxCaption" class="bg-[#fffdf9] px-4 py-3 text-center text-sm text-[#2c4c31] font-medium"></figcaption>
    </figure>
   </div>
@@ -283,19 +277,17 @@
     (() => {
       const weddingDate = new Date("2026-12-13T08:00:00+07:00");
       const mapUrl = "https://www.google.com/maps/search/?api=1&query=-6.3138109,107.5845435";
-      const accountConfig = { yogas: "1091929355", novi: "3780339887" };
       const giftWaNumber = "6289669369352";
 
       const params = new URLSearchParams(window.location.search);
       const initialGuestName = params.get("to") || "";
-      let lightboxIndex = 0;
 
       const byId = id => document.getElementById(id);
       const setText = (id, value) => { const el = byId(id); if (el) el.textContent = value; };
 
       function renderGuestGreeting(name) {
         const cleanName = String(name || "").trim().replace(/^(?:saudara|saudari)\s+/i, "").trim();
-        setText("guestGreeting", cleanName ? `Kepada Yth. Bapak/Ibu/Saudara/i ${cleanName}` : "Kepada Yth. Bapak/Ibu/Saudara/i");
+        setText("guestGreeting", cleanName ? `Kahatur Bapa/Ibu/Sadérék ${cleanName}` : "Kahatur Bapa/Ibu/Sadérék");
       }
 
       function setGuestGreeting() {
@@ -367,22 +359,12 @@
         Object.entries(units).forEach(([id,value]) => setText(id, String(value).padStart(2,"0")));
       }
 
-      function galleryItems() {
-        return [...document.querySelectorAll("#galleryGrid img")].map((image,index) => ({
-          src: image.currentSrc || image.src,
-          alt: image.alt || `Foto galeri ${index + 1}`,
-          caption: ["Momen hangat untuk dirayakan.","Kisah yang dimulai bersama.","Detail kecil yang penuh makna.","Janji untuk selamanya.","Bunga dan harapan baik.","Merayakan cinta bersama orang terkasih."][index]
-        }));
-      }
-
       function showLightbox(index) {
-        const items = galleryItems();
-        if (!items.length || !items[index].src) return;
-        lightboxIndex = index;
-        const item = items[index];
-        byId("lightboxImage").src = item.src;
-        byId("lightboxImage").alt = item.alt;
-        setText("lightboxCaption", item.caption);
+        const item = document.querySelector("#galleryGrid img");
+        if (!item) return;
+        byId("lightboxImage").src = item.currentSrc || item.src;
+        byId("lightboxImage").alt = item.alt || "Galeri Utama";
+        setText("lightboxCaption", "Momen kabagjaan urang.");
         byId("lightbox").classList.add("is-visible");
         byId("lightbox").setAttribute("aria-hidden","false");
         byId("closeLightbox").focus();
@@ -393,19 +375,24 @@
         byId("lightbox").setAttribute("aria-hidden","true");
       }
 
-      function changeImage(direction) {
-        const items = galleryItems();
-        lightboxIndex = (lightboxIndex + direction + items.length) % items.length;
-        showLightbox(lightboxIndex);
-      }
-
-      async function copyAccount(key,statusId) {
-        const number = accountConfig[key];
+      async function copyText(text, statusId, successMsg) {
         try {
-          await navigator.clipboard.writeText(number);
-          setText(statusId,"Nomor rekening berhasil disalin.");
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(text);
+            setText(statusId, successMsg);
+          } else {
+            const textarea = document.createElement("textarea");
+            textarea.value = text;
+            textarea.style.position = "fixed";
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+            setText(statusId, successMsg);
+          }
         } catch (_) {
-          setText(statusId,"Gagal menyalin otomatis.");
+          setText(statusId, "Gagal nyalin otomatis.");
         }
       }
 
@@ -418,14 +405,14 @@
 
         byId("openInvitation").addEventListener("click", openInvitation);
         byId("mapButton").addEventListener("click",() => window.open(mapUrl,"_blank","noopener,noreferrer"));
-        byId("giftWhatsAppButton").addEventListener("click",() => window.open(`https://wa.me/${giftWaNumber}?text=${encodeURIComponent("Halo Yogas & Novi, saya ingin mengonfirmasi hadiah pernikahan.")}`,"_blank","noopener,noreferrer"));
-        byId("copyAccountYogas").addEventListener("click",() => copyAccount("yogas","copyStatusYogas"));
-        byId("copyAccountNovi","click",() => copyAccount("novi","copyStatusNovi"));
+        byId("giftWhatsAppButton").addEventListener("click",() => window.open(`https://wa.me/${giftWaNumber}?text=${encodeURIComponent("Halo Yogas & Novi, sim kuring badé konfirmasi kado pernikahan.")}`,"_blank","noopener,noreferrer"));
+        
+        byId("copyAccountYogas").addEventListener("click",() => copyText("1091929355", "copyStatusYogas", "Nomer rékening parantos disalin."));
+        byId("copyAccountNoviBca").addEventListener("click",() => copyText("3780339887", "copyStatusNoviBca", "Nomer rékening parantos disalin."));
+        byId("copyAccountNoviMandiri").addEventListener("click",() => copyText("1730022829148", "copyStatusNoviMandiri", "Nomer rékening parantos disalin."));
 
         document.querySelectorAll("[data-gallery-index]").forEach(button => button.addEventListener("click",() => showLightbox(Number(button.dataset.galleryIndex))));
         byId("closeLightbox").addEventListener("click",closeLightbox);
-        byId("previousImage").addEventListener("click",() => changeImage(-1));
-        byId("nextImage").addEventListener("click",() => changeImage(1));
         byId("lightbox").addEventListener("click",event => { if(event.target === byId("lightbox")) closeLightbox(); });
       });
     })();
