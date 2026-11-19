@@ -12,31 +12,115 @@
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;color:var(--ink);font-family:"Libre Franklin",sans-serif}
+    body{margin:0;color:var(--ink);font-family:"Libre Franklin",sans-serif;background:#221a16}
     button,input,textarea{font:inherit}
     button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 
+    /* Latar Baru Bernuansa Alam Sunda dengan Palet Warna Tetap (Hijau Daun, Cokelat Kayu, Krem & Emas) */
     .page-shell{
-      width:100%; min-height:100%; overflow:hidden; position:relative;
-      background: 
-        linear-gradient(rgba(34, 26, 22, 0.75), rgba(44, 76, 49, 0.75)),
-        url("https://i.pinimg.com/736x/eb/62/29/eb62295c9030c154529ef13da5a75244.jpg");
+      width:100%; min-height:100vh; overflow-x:hidden; position:relative;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(223, 202, 151, 0.16), transparent 52%),
+        linear-gradient(180deg, rgba(34, 26, 22, 0.72) 0%, rgba(44, 76, 49, 0.76) 45%, rgba(54, 38, 28, 0.84) 100%),
+        url("https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1600&q=80");
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
     }
-    .page-shell:before,.page-shell:after{
-      content:"";position:fixed;inset:0;pointer-events:none;z-index:0
-    }
     .page-shell:before{
-      opacity:.25;
+      content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+      opacity:.22;
       background-image:
-        radial-gradient(circle at 50% 0,transparent 14px,rgba(194,155,83,.1) 14px,rgba(194,155,83,.1) 15px,transparent 15px);
+        radial-gradient(circle at 50% 0,transparent 14px,rgba(194,155,83,.14) 14px,rgba(194,155,83,.14) 15px,transparent 15px);
       background-size:60px 60px;
     }
-    .content-layer{position:relative;z-index:1}
+    .content-layer{position:relative;z-index:2}
     .display-font{font-family:"Playfair Display",serif}
     .title-font{font-family:"Eczar",serif}
+
+    /* Layer Motion Pembuka: Dedaunan & Kupu-Kupu Halus */
+    .nature-motion-layer{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:1;
+      overflow:hidden;
+    }
+    .foliage-corner{
+      position:absolute;
+      width:210px;
+      height:210px;
+      opacity:0;
+      transform:scale(0.86);
+      transition:opacity 1.3s ease, transform 1.4s cubic-bezier(.22,1,.36,1);
+    }
+    .is-invited .foliage-corner{
+      opacity:.82;
+      transform:scale(1);
+    }
+    .foliage-tl{top:-14px;left:-14px;animation:foliageSwayTL 8s ease-in-out infinite alternate}
+    .foliage-tr{top:-14px;right:-14px;transform:scaleX(-1);animation:foliageSwayTR 9s ease-in-out infinite alternate}
+    .foliage-bl{bottom:-14px;left:-14px;transform:scaleY(-1);animation:foliageSwayBL 8.5s ease-in-out infinite alternate}
+    .foliage-br{bottom:-14px;right:-14px;transform:scale(-1,-1);animation:foliageSwayBR 9.5s ease-in-out infinite alternate}
+
+    @keyframes foliageSwayTL{from{transform:rotate(-2deg) translateY(0)}to{transform:rotate(2.5deg) translateY(5px)}}
+    @keyframes foliageSwayTR{from{transform:scaleX(-1) rotate(-2deg)}to{transform:scaleX(-1) rotate(2.5deg) translateY(5px)}}
+    @keyframes foliageSwayBL{from{transform:scaleY(-1) rotate(-2deg)}to{transform:scaleY(-1) rotate(2deg)}}
+    @keyframes foliageSwayBR{from{transform:scale(-1,-1) rotate(-2deg)}to{transform:scale(-1,-1) rotate(2deg)}}
+
+    .butterfly{
+      position:absolute;
+      width:30px;
+      height:30px;
+      opacity:0;
+      transition:opacity 1.2s ease;
+    }
+    .is-invited .butterfly{opacity:.88}
+    .butterfly-1{top:18%;left:12%;animation:butterflyPath1 19s ease-in-out infinite}
+    .butterfly-2{top:34%;right:14%;animation:butterflyPath2 23s ease-in-out infinite 2s}
+    .butterfly-3{bottom:26%;left:18%;animation:butterflyPath3 21s ease-in-out infinite 4s}
+
+    .butterfly svg{
+      width:100%;height:100%;
+      animation:wingFlap .42s ease-in-out infinite alternate;
+      filter:drop-shadow(0 3px 6px rgba(0,0,0,.35));
+    }
+    @keyframes wingFlap{
+      from{transform:scaleX(1) rotate(-4deg)}
+      to{transform:scaleX(0.55) rotate(4deg)}
+    }
+    @keyframes butterflyPath1{
+      0%,100%{transform:translate(0,0) rotate(8deg)}
+      25%{transform:translate(48px,-26px) rotate(16deg)}
+      50%{transform:translate(86px,12px) rotate(-6deg)}
+      75%{transform:translate(32px,30px) rotate(-12deg)}
+    }
+    @keyframes butterflyPath2{
+      0%,100%{transform:translate(0,0) rotate(-10deg)}
+      33%{transform:translate(-58px,-22px) rotate(-18deg)}
+      66%{transform:translate(-26px,28px) rotate(8deg)}
+    }
+    @keyframes butterflyPath3{
+      0%,100%{transform:translate(0,0) rotate(6deg)}
+      40%{transform:translate(54px,-34px) rotate(14deg)}
+      80%{transform:translate(18px,-12px) rotate(-8deg)}
+    }
+
+    /* Animasi Fade In & Fade Out Bertahap Saat Di-Scroll */
+    .scroll-fade{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity 0.95s cubic-bezier(.22,1,.36,1), transform 0.95s cubic-bezier(.22,1,.36,1);
+      will-change:opacity, transform;
+    }
+    .scroll-fade.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+    .delay-1{transition-delay:.08s}
+    .delay-2{transition-delay:.22s}
+    .delay-3{transition-delay:.36s}
+    .delay-4{transition-delay:.50s}
 
     .batik-line{display:flex;align-items:center;justify-content:center;gap:13px;color:var(--light-gold)}
     .batik-line:before,.batik-line:after{content:"";width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--light-gold))}
@@ -78,37 +162,20 @@
       content:"";width:56px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);
     }
 
-    /* Running Text Pelan & Lembut */
-    .marquee-wrap{
-      overflow:hidden;
-      white-space:nowrap;
-      position:relative;
-      border-top:1px solid rgba(223,202,151,.35);
-      border-bottom:1px solid rgba(223,202,151,.35);
-      background:rgba(28,44,31,.65);
-      backdrop-filter:blur(4px);
-      padding:12px 0;
+    /* Kotak Doa di Bawah Foto Galeri dengan Fade In / Fade Out Saat Scroll */
+    .gallery-caption-box{
+      border-top:1px solid rgba(223,202,151,.4);
+      border-bottom:1px solid rgba(223,202,151,.4);
+      background:rgba(28,44,31,.68);
+      backdrop-filter:blur(5px);
+      padding:16px 20px;
       margin-top:18px;
-      border-radius:4px;
-      mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-      -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-    }
-    .marquee-track{
-      display:inline-flex;
-      align-items:center;
-      gap:36px;
-      padding-left:100%;
-      animation:smoothMarquee 42s linear infinite;
-    }
-    .marquee-wrap:hover .marquee-track{
-      animation-play-state:paused;
-    }
-    @keyframes smoothMarquee{
-      0%{transform:translateX(0)}
-      100%{transform:translateX(-100%)}
+      border-radius:6px;
+      text-align:center;
+      box-shadow:0 10px 28px rgba(0,0,0,.22);
     }
 
-    /* Dekorasi Pop-Up Adat Sunda & Teks Penutup Slide */
+    /* Dekorasi Pop-Up Adat Sunda & Teks Penutup */
     .closing-showcase{
       position:relative;
       max-width:620px;
@@ -117,7 +184,7 @@
       border:1px solid rgba(223,202,151,.55);
       background:
         radial-gradient(circle at 50% 0%, rgba(194,155,83,.22), transparent 68%),
-        rgba(24,38,27,.72);
+        rgba(24,38,27,.74);
       backdrop-filter:blur(6px);
       border-radius:10px;
       box-shadow:0 16px 40px rgba(0,0,0,.32);
@@ -139,7 +206,7 @@
       color:var(--light-gold);
       opacity:0;
       transform:scale(0.4);
-      transition:transform .9s cubic-bezier(.22,1.3,.36,1) .18s, opacity .8s ease .18s;
+      transition:transform .9s cubic-bezier(.22,1.3,.36,1) .15s, opacity .8s ease .15s;
       pointer-events:none;
     }
     .closing-showcase.is-visible .sunda-popup-corner{
@@ -154,12 +221,12 @@
     .sunda-popup-corner.br{bottom:8px;right:8px;transform:scale(0.4) scale(-1,-1)}
     .closing-showcase.is-visible .sunda-popup-corner.br{transform:scale(1) scale(-1,-1)}
 
-    .closing-slide-text{
+    .closing-fade-text{
       opacity:0;
-      transform:translateY(26px);
-      transition:transform .95s cubic-bezier(.22,1,.36,1) .28s, opacity .85s ease .28s;
+      transform:translateY(14px);
+      transition:opacity .95s ease .25s, transform .95s ease .25s;
     }
-    .closing-showcase.is-visible .closing-slide-text{
+    .closing-showcase.is-visible .closing-fade-text{
       opacity:1;
       transform:translateY(0);
     }
@@ -188,13 +255,11 @@
       background:rgba(34, 26, 22, 0.45);
       backdrop-filter: blur(4px);
     }
-    .section-reveal{animation:rise .8s ease both}
-    @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 
     .envelope-overlay{
       position:fixed;z-index:60;inset:0;display:grid;place-items:start center;padding:22px;
-      background:linear-gradient(145deg,rgba(28,44,31,.95),rgba(24,35,26,.98));
-      transition:opacity .75s ease,visibility .75s ease;
+      background:linear-gradient(145deg,rgba(28,44,31,.96),rgba(24,35,26,.98));
+      transition:opacity .8s ease,visibility .8s ease;
     }
     .envelope-overlay.is-open{opacity:0;visibility:hidden;pointer-events:none}
     .envelope{width:min(460px,100%);padding:12px;background:repeating-linear-gradient(45deg,rgba(194,155,83,.22) 0 10px,transparent 10px 22px),#364c38;box-shadow:0 30px 80px rgba(0,0,0,.45);border:1px solid var(--gold)}
@@ -221,12 +286,13 @@
     .lightbox.is-visible{display:flex}
     .lightbox-figure{width:min(920px,100%);max-height:90%;position:relative}
     .lightbox-image{width:100%;max-height:calc(78 * min(var(--vh,1vh),1vh));object-fit:contain;background:#18231a}
-    .lightbox-control,.lightbox-close{position:absolute;display:grid;place-items:center;border:1px solid rgba(194,155,83,.6);color:var(--paper);background:var(--leaf)}
-    .lightbox-control{top:50%;width:44px;height:44px;border-radius:999px;transform:translateY(-50%)}
-    .lightbox-prev{left:12px}.lightbox-next{right:12px}
-    .lightbox-close{top:10px;right:10px;width:42px;height:42px;border-radius:999px}
+    .lightbox-close{position:absolute;display:grid;place-items:center;border:1px solid rgba(194,155,83,.6);color:var(--paper);background:var(--leaf);top:10px;right:10px;width:42px;height:42px;border-radius:999px}
     .status{min-height:24px;font-size:.84rem}
-    @media(max-width:640px){.envelope-letter{min-height:365px;padding:28px 20px}.batik-line:before,.batik-line:after{width:40px}}
+    @media(max-width:640px){
+      .envelope-letter{min-height:365px;padding:28px 20px}
+      .batik-line:before,.batik-line:after{width:40px}
+      .foliage-corner{width:145px;height:145px}
+    }
   </style>
   <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
@@ -238,7 +304,83 @@
     Your browser does not support the audio element.
   </audio>
 
-  <div class="page-shell">
+  <div id="pageShell" class="page-shell">
+
+   <!-- Motion Pembuka: Dedaunan Sudut & Kupu-Kupu Melayang Halus -->
+   <div class="nature-motion-layer" aria-hidden="true">
+     <!-- Dedaunan Kiri Atas -->
+     <svg class="foliage-corner foliage-tl" viewBox="0 0 200 200" fill="none">
+       <path d="M-10 10 C45 12, 92 42, 128 88" stroke="#4c6d53" stroke-width="2.5" stroke-linecap="round"/>
+       <path d="M22 18 C36 2, 62 4, 70 22 C52 28, 34 26, 22 18 Z" fill="#2c4c31" stroke="#c29b53" stroke-width="0.9"/>
+       <path d="M54 34 C72 16, 102 20, 108 42 C88 48, 68 44, 54 34 Z" fill="#3a5f40" stroke="#c29b53" stroke-width="0.9"/>
+       <path d="M84 56 C106 42, 134 48, 136 70 C116 74, 96 68, 84 56 Z" fill="#2c4c31" stroke="#dfca97" stroke-width="0.8"/>
+       <path d="M16 44 C4 64, 10 92, 30 98 C36 78, 30 58, 16 44 Z" fill="#3a5f40" stroke="#c29b53" stroke-width="0.9"/>
+       <path d="M46 66 C34 88, 42 118, 62 122 C68 102, 60 80, 46 66 Z" fill="#2c4c31" stroke="#c29b53" stroke-width="0.9"/>
+       <circle cx="96" cy="48" r="3" fill="#dfca97"/>
+       <circle cx="118" cy="76" r="2.5" fill="#c29b53"/>
+     </svg>
+
+     <!-- Dedaunan Kanan Atas -->
+     <svg class="foliage-corner foliage-tr" viewBox="0 0 200 200" fill="none">
+       <path d="M-10 10 C45 12, 92 42, 128 88" stroke="#4c6d53" stroke-width="2.5" stroke-linecap="round"/>
+       <path d="M22 18 C36 2, 62 4, 70 22 C52 28, 34 26, 22 18 Z" fill="#2c4c31" stroke="#c29b53" stroke-width="0.9"/>
+       <path d="M54 34 C72 16, 102 20, 108 42 C88 48, 68 44, 54 34 Z" fill="#3a5f40" stroke="#c29b53" stroke-width="0.9"/>
+       <path d="M84 56 C106 42, 134 48, 136 70 C116 74, 96 68, 84 56 Z" fill="#2c4c31" stroke="#dfca97" stroke-width="0.8"/>
+       <path d="M16 44 C4 64, 10 92, 30 98 C36 78, 30 58, 16 44 Z" fill="#3a5f40" stroke="#c29b53" stroke-width="0.9"/>
+       <path d="M46 66 C34 88, 42 118, 62 122 C68 102, 60 80, 46 66 Z" fill="#2c4c31" stroke="#c29b53" stroke-width="0.9"/>
+       <circle cx="96" cy="48" r="3" fill="#dfca97"/>
+     </svg>
+
+     <!-- Dedaunan Kiri Bawah -->
+     <svg class="foliage-corner foliage-bl" viewBox="0 0 200 200" fill="none">
+       <path d="M-10 10 C45 12, 92 42, 128 88" stroke="#4c6d53" stroke-width="2.5" stroke-linecap="round"/>
+       <path d="M22 18 C36 2, 62 4, 70 22 C52 28, 34 26, 22 18 Z" fill="#2c4c31" stroke="#c29b53" stroke-width="0.9"/>
+       <path d="M54 34 C72 16, 102 20, 108 42 C88 48, 68 44, 54 34 Z" fill="#3a5f40" stroke="#c29b53" stroke-width="0.9"/>
+       <path d="M16 44 C4 64, 10 92, 30 98 C36 78, 30 58, 16 44 Z" fill="#3a5f40" stroke="#c29b53" stroke-width="0.9"/>
+     </svg>
+
+     <!-- Dedaunan Kanan Bawah -->
+     <svg class="foliage-corner foliage-br" viewBox="0 0 200 200" fill="none">
+       <path d="M-10 10 C45 12, 92 42, 128 88" stroke="#4c6d53" stroke-width="2.5" stroke-linecap="round"/>
+       <path d="M22 18 C36 2, 62 4, 70 22 C52 28, 34 26, 22 18 Z" fill="#2c4c31" stroke="#c29b53" stroke-width="0.9"/>
+       <path d="M54 34 C72 16, 102 20, 108 42 C88 48, 68 44, 54 34 Z" fill="#3a5f40" stroke="#c29b53" stroke-width="0.9"/>
+       <path d="M16 44 C4 64, 10 92, 30 98 C36 78, 30 58, 16 44 Z" fill="#3a5f40" stroke="#c29b53" stroke-width="0.9"/>
+     </svg>
+
+     <!-- Kupu-Kupu 1 -->
+     <div class="butterfly butterfly-1">
+       <svg viewBox="0 0 40 40" fill="none">
+         <path d="M20 20 C12 8, 2 10, 5 21 C7 27, 15 25, 20 20 Z" fill="#c29b53" stroke="#f2ede1" stroke-width="0.8"/>
+         <path d="M20 20 C28 8, 38 10, 35 21 C33 27, 25 25, 20 20 Z" fill="#c29b53" stroke="#f2ede1" stroke-width="0.8"/>
+         <path d="M20 21 C13 24, 9 32, 15 34 C19 35, 20 27, 20 21 Z" fill="#593e30" stroke="#dfca97" stroke-width="0.7"/>
+         <path d="M20 21 C27 24, 31 32, 25 34 C21 35, 20 27, 20 21 Z" fill="#593e30" stroke="#dfca97" stroke-width="0.7"/>
+         <line x1="20" y1="13" x2="20" y2="30" stroke="#36261c" stroke-width="1.5" stroke-linecap="round"/>
+       </svg>
+     </div>
+
+     <!-- Kupu-Kupu 2 -->
+     <div class="butterfly butterfly-2">
+       <svg viewBox="0 0 40 40" fill="none">
+         <path d="M20 20 C12 8, 2 10, 5 21 C7 27, 15 25, 20 20 Z" fill="#dfca97" stroke="#593e30" stroke-width="0.8"/>
+         <path d="M20 20 C28 8, 38 10, 35 21 C33 27, 25 25, 20 20 Z" fill="#dfca97" stroke="#593e30" stroke-width="0.8"/>
+         <path d="M20 21 C13 24, 9 32, 15 34 C19 35, 20 27, 20 21 Z" fill="#c29b53" stroke="#f2ede1" stroke-width="0.7"/>
+         <path d="M20 21 C27 24, 31 32, 25 34 C21 35, 20 27, 20 21 Z" fill="#c29b53" stroke="#f2ede1" stroke-width="0.7"/>
+         <line x1="20" y1="13" x2="20" y2="30" stroke="#36261c" stroke-width="1.5" stroke-linecap="round"/>
+       </svg>
+     </div>
+
+     <!-- Kupu-Kupu 3 -->
+     <div class="butterfly butterfly-3">
+       <svg viewBox="0 0 40 40" fill="none">
+         <path d="M20 20 C12 8, 2 10, 5 21 C7 27, 15 25, 20 20 Z" fill="#c29b53" stroke="#f2ede1" stroke-width="0.8"/>
+         <path d="M20 20 C28 8, 38 10, 35 21 C33 27, 25 25, 20 20 Z" fill="#c29b53" stroke="#f2ede1" stroke-width="0.8"/>
+         <path d="M20 21 C13 24, 9 32, 15 34 C19 35, 20 27, 20 21 Z" fill="#593e30" stroke="#dfca97" stroke-width="0.7"/>
+         <path d="M20 21 C27 24, 31 32, 25 34 C21 35, 20 27, 20 21 Z" fill="#593e30" stroke="#dfca97" stroke-width="0.7"/>
+         <line x1="20" y1="13" x2="20" y2="30" stroke="#36261c" stroke-width="1.5" stroke-linecap="round"/>
+       </svg>
+     </div>
+   </div>
+
    <div class="content-layer">
     
     <div id="adminLinkBuilder" style="background: rgba(44, 76, 49, 0.96); color: #fffdf9; padding: 12px 20px; text-align: center; font-size: 13px; border-bottom: 1px solid rgba(194, 155, 83, 0.5); position: relative; z-index: 65;">
@@ -268,16 +410,23 @@
      </div>
     </div>
     
+    <!-- Bagian Awal dengan Fade In & Fade Out Bertahap Saat Di-Scroll -->
     <header class="carving-border px-5 pb-20 pt-16 text-center sm:pt-24 text-white">
-     <div class="mx-auto max-w-3xl section-reveal">
-      <div class="ornament-crown" aria-hidden="true">
-       ᮚᮧᮌᮞ᮪ ᮓᮔ᮪ ᮔᮧᮗᮤ
+     <div class="mx-auto max-w-3xl">
+      <div class="scroll-fade delay-1">
+        <div class="ornament-crown" aria-hidden="true">
+         ᮚᮧᮌᮞ᮪ ᮓᮔ᮪ ᮔᮧᮗᮤ
+        </div>
+        <p class="mt-5 text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Pernikahan Yogas &amp; Novi</p>
+        <div class="batik-line mt-5"><span aria-hidden="true">❖</span></div>
       </div>
-      <p class="mt-5 text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Pernikahan Yogas &amp; Novi</p>
-      <div class="batik-line mt-5"><span aria-hidden="true">❖</span></div>
-      <h2 class="title-font mt-7 text-white" style="font-size: 72px; text-shadow: 0 2px 4px rgba(0,0,0,0.4);">Yogas &amp; Novi</h2>
-      <p class="mt-4 text-sm font-semibold uppercase tracking-[.16em]" style="color: rgb(223, 202, 151);">Saptu, 12 Désémber 2026</p>
-      <blockquote class="mx-auto mt-10 max-w-xl border-y border-[#dfca97]/60 py-7">
+
+      <div class="scroll-fade delay-2">
+        <h2 class="title-font mt-7 text-white" style="font-size: 72px; text-shadow: 0 2px 4px rgba(0,0,0,0.4);">Yogas &amp; Novi</h2>
+        <p class="mt-4 text-sm font-semibold uppercase tracking-[.16em]" style="color: rgb(223, 202, 151);">Saptu, 12 Désémber 2026</p>
+      </div>
+
+      <blockquote class="scroll-fade delay-3 mx-auto mt-10 max-w-xl border-y border-[#dfca97]/60 py-7">
        <p class="display-font text-sm leading-7 text-white" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3);">“Sareng di antawis tanda-tanda kakawasaan-Anjeunna, Anjeunna parantos nyiptakeun pasangan-pasangan kanggo maranéh tina bangsa maranéh sorangan, supados maranéh ngarasa tengtrem ka manéhna, sareng Anjeunna parantos ngajantenkeun di antawis maranéh rasa cinta tur nyaah.”</p>
        <cite class="mt-4 block text-xs not-italic uppercase tracking-[.2em]" style="color: rgb(223, 202, 151);">QS. Ar-Rum: 21</cite>
       </blockquote>
@@ -286,7 +435,7 @@
     
     <main>
      <section class="px-5 pb-20 pt-20">
-      <div class="sunda-frame mx-auto max-w-3xl px-5 py-10 text-center sm:px-10">
+      <div class="scroll-fade delay-2 sunda-frame mx-auto max-w-3xl px-5 py-10 text-center sm:px-10">
        <div class="sunda-mark text-xl" aria-hidden="true">ᮠᮤᮕᮩᮜ᮪ ᮃᮊ᮪ᮞᮛ</div>
        <p class="mt-3 text-xs font-semibold uppercase tracking-[.24em]" style="color: rgb(76, 109, 83);">Nuju Dinten Bagja</p>
        <h2 class="display-font mt-3" style="color: rgb(44, 76, 49); font-size: 21px;">Ngitung Dinten Babarengan</h2>
@@ -302,11 +451,13 @@
 
      <section class="px-5 pb-20">
       <div class="mx-auto max-w-5xl text-center">
-       <p class="text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Kagungan Rasa Syukur</p>
-       <h2 class="display-font mt-3 text-white" style="font-size: 21px; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">Panganten</h2>
+       <div class="scroll-fade delay-1">
+         <p class="text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Kagungan Rasa Syukur</p>
+         <h2 class="display-font mt-3 text-white" style="font-size: 21px; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">Panganten</h2>
+       </div>
        <div class="mt-10 grid gap-8 md:grid-cols-2">
         <!-- Kartu Mempelai Pria dengan Ornamen Sunda -->
-        <article class="sunda-couple-card px-8 py-12">
+        <article class="scroll-fade delay-2 sunda-couple-card px-8 py-12">
          <svg class="sunda-corner sunda-corner-tl" viewBox="0 0 36 36" fill="none" aria-hidden="true">
            <path d="M2 24V6C2 3.8 3.8 2 6 2H24M2 14C8 14 14 8 14 2M7 22C7 13 13 7 22 7" stroke="currentColor" stroke-width="1.5"/>
            <circle cx="9" cy="9" r="2" fill="currentColor"/>
@@ -332,7 +483,7 @@
         </article>
 
         <!-- Kartu Mempelai Wanita dengan Ornamen Sunda -->
-        <article class="sunda-couple-card px-8 py-12">
+        <article class="scroll-fade delay-3 sunda-couple-card px-8 py-12">
          <svg class="sunda-corner sunda-corner-tl" viewBox="0 0 36 36" fill="none" aria-hidden="true">
            <path d="M2 24V6C2 3.8 3.8 2 6 2H24M2 14C8 14 14 8 14 2M7 22C7 13 13 7 22 7" stroke="currentColor" stroke-width="1.5"/>
            <circle cx="9" cy="9" r="2" fill="currentColor"/>
@@ -362,12 +513,12 @@
 
      <section class="carving-border px-5 py-20 text-white">
       <div class="mx-auto max-w-3xl">
-       <div class="text-center">
+       <div class="scroll-fade delay-1 text-center">
         <p class="text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Runtuyan Acara</p>
         <h2 class="display-font mt-3 text-white" style="font-size: 21px; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">Jadwal Acara</h2>
        </div>
        <div class="mt-10">
-        <article class="sunda-frame p-8 text-center" style="background: rgba(255,253,249,.96);">
+        <article class="scroll-fade delay-2 sunda-frame p-8 text-center" style="background: rgba(255,253,249,.96);">
          <i data-lucide="heart-handshake" class="mx-auto h-7 w-7 text-[#c29b53]" aria-hidden="true"></i>
          <h3 class="display-font mt-5" style="color: rgb(44, 76, 49); font-size: 18px;">Akad Nikah &amp; Résepsi</h3>
          <p class="mt-4 text-sm font-semibold leading-7" style="color: rgb(44, 76, 49);">Saptu, 12 Désémber 2026</p>
@@ -382,19 +533,14 @@
 
      <section class="px-5 py-20">
       <div class="mx-auto max-w-xl">
-       <div id="galleryGrid">
+       <div id="galleryGrid" class="scroll-fade delay-1">
         <button type="button" class="gallery-item aspect-[16/9] mx-auto block" data-gallery-index="0"><img loading="lazy" src="https://files.catbox.moe/wleyig.png" alt="Galeri Utama"></button> 
        </div>
-       <!-- Running Text Pelan & Lembut di Bawah Foto -->
-       <div class="marquee-wrap" aria-label="Doa dan harapan pernikahan">
-         <div class="marquee-track display-font text-sm tracking-wide text-[#dfca97]">
-           <span>“Mugi janten léngkah awal anu pinuh ku berkah, kabagjaan, sareng katenangan haté.”</span>
-           <span aria-hidden="true">❖</span>
-           <span>“Silih asih, silih asah, silih asuh dina ngawangun kahirupan anu éndah.”</span>
-           <span aria-hidden="true">❖</span>
-           <span>“Mugi janten rumah tangga anu sakinah, mawaddah, warahmah salamina.”</span>
-           <span aria-hidden="true">❖</span>
-         </div>
+       <!-- Teks di Bawah Galeri dengan Fade In & Fade Out Lembut Saat Di-Scroll -->
+       <div class="scroll-fade delay-2 gallery-caption-box">
+         <p class="display-font text-sm leading-7 tracking-wide text-[#dfca97]">
+           “Mugi janten léngkah awal anu pinuh ku berkah, kabagjaan, sareng katenangan haté.”
+         </p>
        </div>
       </div>
      </section>
@@ -402,9 +548,8 @@
      <section class="carving-border px-5 py-20 text-white">
       <div class="mx-auto max-w-3xl text-center">
 
-       <!-- Teks Penutup dengan Efek Slide & Dekorasi Pop-Up Adat Sunda -->
-       <div id="closingShowcase" class="closing-showcase">
-         <!-- Hiasan Pop-Up Sudut Megamendung / Sulur Sunda -->
+       <!-- Teks Penutup dengan Efek Fade In/Fade Out Saat Scroll & Dekorasi Pop-Up Adat Sunda -->
+       <div id="closingShowcase" class="scroll-fade closing-showcase">
          <svg class="sunda-popup-corner tl" viewBox="0 0 48 48" fill="none" aria-hidden="true">
            <path d="M4 34C4 18 16 6 34 4M4 22C12 22 22 12 22 4M10 38C10 24 24 10 38 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
            <circle cx="13" cy="13" r="2.2" fill="currentColor"/>
@@ -422,7 +567,6 @@
            <circle cx="13" cy="13" r="2.2" fill="currentColor"/>
          </svg>
 
-         <!-- Hiasan Pop-Up Tengah (Simbol Kujang & Aksara Sunda) -->
          <div class="sunda-popup-ornament flex flex-col items-center">
            <button id="kujangBadge" type="button" class="kujang-badge" title="Hiasan Adat Sunda" aria-label="Hiasan Adat Sunda">
              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
@@ -432,8 +576,7 @@
            <span class="mt-2 text-xs tracking-[.26em] text-[#dfca97]" aria-hidden="true">ᮠᮒᮥᮁ ᮔᮥᮠᮥᮔ᮪</span>
          </div>
 
-         <!-- Teks Penutup dengan Animasi Slide -->
-         <div class="closing-slide-text mt-4">
+         <div class="closing-fade-text mt-4">
            <p class="display-font text-base leading-8 text-white sm:text-lg" style="text-shadow: 0 1px 3px rgba(0,0,0,0.4);">
              “Kalayan pinuh ku rasa hormat sareng kabingahan, sim kuring neda pidu'a sareng kasumpinganana mugi janten berkah kanggo urang sadayana.”
            </p>
@@ -441,11 +584,14 @@
          </div>
        </div>
 
-       <p class="text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Tanda Kadeudeuh</p>
-       <h2 class="display-font mt-3 text-white" style="font-size: 21px; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">Amplop Digital</h2>
-       <p class="mx-auto mt-5 max-w-xl text-sm leading-7 text-white" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3);">Doa restu Anjeun mangrupikeun kado anu pangéndahna. Upami kersa masihan tanda kadeudeuh, inpormasi ieu tiasa dianggo.</p>
+       <div class="scroll-fade delay-1">
+         <p class="text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Tanda Kadeudeuh</p>
+         <h2 class="display-font mt-3 text-white" style="font-size: 21px; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">Amplop Digital</h2>
+         <p class="mx-auto mt-5 max-w-xl text-sm leading-7 text-white" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3);">Doa restu Anjeun mangrupikeun kado anu pangéndahna. Upami kersa masihan tanda kadeudeuh, inpormasi ieu tiasa dianggo.</p>
+       </div>
+
        <div class="mx-auto mt-8 grid max-w-xl gap-5">
-        <article class="sunda-frame p-7" style="background: rgba(255,253,249,.96);">
+        <article class="scroll-fade delay-1 sunda-frame p-7" style="background: rgba(255,253,249,.96);">
          <i data-lucide="gift" class="mx-auto h-7 w-7 text-[#c29b53]"></i>
          <p class="mt-5 text-xs font-semibold uppercase tracking-[.2em]" style="color: rgb(76, 109, 83);">BCA</p>
          <p class="mt-3 text-sm font-medium" style="color: rgb(44, 76, 49);">a/n Yogaswara</p>
@@ -454,7 +600,7 @@
          <p id="copyStatusYogas" class="status mt-3 text-xs font-semibold text-[#2c4c31]"></p>
         </article>
         
-        <article class="sunda-frame p-7" style="background: rgba(255,253,249,.96);">
+        <article class="scroll-fade delay-2 sunda-frame p-7" style="background: rgba(255,253,249,.96);">
          <i data-lucide="gift" class="mx-auto h-7 w-7 text-[#c29b53]"></i>
          <p class="mt-5 text-xs font-semibold uppercase tracking-[.2em]" style="color: rgb(76, 109, 83);">BCA</p>
          <p class="mt-3 text-sm font-medium" style="color: rgb(44, 76, 49);">a/n Novi Erlinda</p>
@@ -463,7 +609,7 @@
          <p id="copyStatusNoviBca" class="status mt-3 text-xs font-semibold text-[#2c4c31]"></p>
         </article>
 
-        <article class="sunda-frame p-7" style="background: rgba(255,253,249,.96);">
+        <article class="scroll-fade delay-3 sunda-frame p-7" style="background: rgba(255,253,249,.96);">
          <i data-lucide="gift" class="mx-auto h-7 w-7 text-[#c29b53]"></i>
          <p class="mt-5 text-xs font-semibold uppercase tracking-[.2em]" style="color: rgb(76, 109, 83);">Bank Mandiri</p>
          <p class="mt-3 text-sm font-medium" style="color: rgb(44, 76, 49);">a/n Novi Erlinda</p>
@@ -472,7 +618,7 @@
          <p id="copyStatusNoviMandiri" class="status mt-3 text-xs font-semibold text-[#2c4c31]"></p>
         </article>
        </div>
-       <button id="giftWhatsAppButton" type="button" class="sunda-button mt-5 inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold">
+       <button id="giftWhatsAppButton" type="button" class="scroll-fade delay-4 sunda-button mt-5 inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold">
          <i data-lucide="message-circle" class="h-4 w-4"></i><span>Konfirmasi Hadiah via WhatsApp</span>
        </button>
       </div>
@@ -544,6 +690,7 @@
 
       function openInvitation() {
         const overlay = byId("envelopeOverlay");
+        const shell = byId("pageShell");
         overlay.classList.add("is-opening");
         
         const bgMusic = byId("bgMusic");
@@ -554,6 +701,7 @@
 
         window.setTimeout(() => {
           overlay.classList.add("is-open");
+          if (shell) shell.classList.add("is-invited");
           window.scrollTo({ top: 0, behavior: "smooth" });
         }, 320);
       }
@@ -574,22 +722,28 @@
         Object.entries(units).forEach(([id,value]) => setText(id, String(value).padStart(2,"0")));
       }
 
-      function setupClosingObserver() {
-        const closingBox = byId("closingShowcase");
+      /* Observer Fade In & Fade Out Lembut Saat Di-Scroll */
+      function setupScrollFadeObserver() {
+        const fadeItems = document.querySelectorAll(".scroll-fade");
         const kujangBtn = byId("kujangBadge");
-        if (!closingBox) return;
 
         if ("IntersectionObserver" in window) {
           const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
               if (entry.isIntersecting) {
-                closingBox.classList.add("is-visible");
+                entry.target.classList.add("is-visible");
+              } else {
+                entry.target.classList.remove("is-visible");
               }
             });
-          }, { threshold: 0.25 });
-          observer.observe(closingBox);
+          }, {
+            threshold: 0.14,
+            rootMargin: "0px 0px -30px 0px"
+          });
+
+          fadeItems.forEach(item => observer.observe(item));
         } else {
-          closingBox.classList.add("is-visible");
+          fadeItems.forEach(item => item.classList.add("is-visible"));
         }
 
         if (kujangBtn) {
@@ -601,7 +755,7 @@
         }
       }
 
-      function showLightbox(index) {
+      function showLightbox() {
         const item = document.querySelector("#galleryGrid img");
         if (!item) return;
         byId("lightboxImage").src = item.currentSrc || item.src;
@@ -642,7 +796,7 @@
         lucide.createIcons();
         setGuestGreeting();
         setupAdminBuilder();
-        setupClosingObserver();
+        setupScrollFadeObserver();
         updateCountdown();
         window.setInterval(updateCountdown,1000);
 
@@ -654,7 +808,7 @@
         byId("copyAccountNoviBca").addEventListener("click",() => copyText("3780339887", "copyStatusNoviBca", "Nomer rékening parantos disalin."));
         byId("copyAccountNoviMandiri").addEventListener("click",() => copyText("1730022829148", "copyStatusNoviMandiri", "Nomer rékening parantos disalin."));
 
-        document.querySelectorAll("[data-gallery-index]").forEach(button => button.addEventListener("click",() => showLightbox(Number(button.dataset.galleryIndex))));
+        document.querySelectorAll("[data-gallery-index]").forEach(button => button.addEventListener("click", showLightbox));
         byId("closeLightbox").addEventListener("click",closeLightbox);
         byId("lightbox").addEventListener("click",event => { if(event.target === byId("lightbox")) closeLightbox(); });
       });
