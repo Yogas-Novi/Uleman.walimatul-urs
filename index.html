@@ -131,9 +131,8 @@
        <p class="mt-4 text-xs font-semibold uppercase tracking-[.25em]" style="color: rgb(76, 109, 83);">Uleman Pernikahan</p>
        <h1 id="envelope-title" class="title-font mt-3 leading-none" style="color: rgb(44, 76, 49); font-size: 48px;">Yogas &amp; Novi</h1>
        <div class="batik-line mt-5"><span aria-hidden="true">❖</span></div>
-       <p id="guestGreeting" class="mt-6 max-w-sm text-center text-sm leading-relaxed text-[#2c4c31] font-medium"></p>
-       <label class="mt-6 block w-full text-left text-xs font-semibold uppercase tracking-[.15em]" for="guestName" style="color: rgb(44, 76, 49);">Nami Tamu</label> 
-       <input id="guestName" class="form-field mt-2 text-center" type="text" maxlength="80" autocomplete="name"> 
+       <p id="guestGreeting" class="mt-6 max-w-sm text-center text-sm leading-relaxed text-[#2c4c31] font-medium">Kahatur Bapa/Ibu/Sadérék</p>
+       <input id="guestName" class="form-field mt-3 text-center font-medium" type="text" maxlength="80" autocomplete="name" aria-label="Nami Tamu"> 
        <button id="openInvitation" type="button" class="sunda-button mt-6 rounded-full px-7 py-3 text-sm font-semibold">Buka Uleman</button>
       </div>
      </div>
@@ -285,16 +284,10 @@
       const byId = id => document.getElementById(id);
       const setText = (id, value) => { const el = byId(id); if (el) el.textContent = value; };
 
-      function renderGuestGreeting(name) {
-        const cleanName = String(name || "").trim().replace(/^(?:saudara|saudari)\s+/i, "").trim();
-        setText("guestGreeting", cleanName ? `Kahatur Bapa/Ibu/Sadérék ${cleanName}` : "Kahatur Bapa/Ibu/Sadérék");
-      }
-
       function setGuestGreeting() {
         const input = byId("guestName");
+        setText("guestGreeting", "Kahatur Bapa/Ibu/Sadérék");
         input.value = initialGuestName;
-        renderGuestGreeting(initialGuestName);
-        input.addEventListener("input", event => renderGuestGreeting(event.target.value.trim()));
       }
 
       function setupAdminBuilder() {
@@ -304,7 +297,7 @@
           if (adminPanel) adminPanel.style.display = "none";
           if (overlay) overlay.style.top = "0px";
         } else {
-          byId("customGuestInput").value = "Budi Santoso";
+          byId("customGuestInput").value = "Cep Deden - Di tempat";
           updateGeneratedLink();
           byId("customGuestInput").addEventListener("input", updateGeneratedLink);
           byId("copyCustomLinkBtn").addEventListener("click", copyCustomLink);
