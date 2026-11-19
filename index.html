@@ -48,7 +48,7 @@
     .display-font{font-family:"Playfair Display",serif}
     .title-font{font-family:"Eczar",serif}
 
-    /* Tahap 1: Tirai Batik Mega Mendung Berpola Awan Berlapis (Memudar & Bergeser Halus Seperti Video) */
+    /* Tahap 1 (~0s - 2.2s): Tirai Batik Mega Mendung Klasik Berkontur Tegas (Memudar & Bergeser Santai) */
     .opening-motion-curtain{
       position:fixed;
       inset:0;
@@ -57,8 +57,8 @@
       opacity:0;
       visibility:hidden;
       overflow:hidden;
-      background:#36261c;
-      transition:opacity 0.95s cubic-bezier(.22,1,.36,1), visibility 0.95s ease;
+      background:#2c4c31;
+      transition:opacity 1.8s cubic-bezier(.22,1,.36,1), visibility 1.8s ease;
     }
     .opening-motion-curtain.is-playing{
       opacity:1;
@@ -73,18 +73,18 @@
       inset:-8%;
       width:116%;
       height:116%;
-      transform:scale(1.04) translateY(0);
-      transition:transform 1.25s cubic-bezier(.22,1,.36,1), opacity 0.95s ease;
+      transform:scale(1.03) translateY(0);
+      transition:transform 2.4s cubic-bezier(.22,1,.36,1), opacity 1.8s ease;
     }
     .opening-motion-curtain.is-playing .megamendung-svg{
       transform:scale(1) translateY(-10px);
     }
     .opening-motion-curtain.is-done .megamendung-svg{
-      transform:scale(1.08) translateY(-24px);
+      transform:scale(1.07) translateY(-24px);
       opacity:0;
     }
 
-    /* Layer Motion Bertahap: Tahap 2 (Ornamen Sunda) -> Tahap 3 (Kupu-Kupu) */
+    /* Layer Motion Santai: Tahap 2 (~1.8s - 3.8s Ornamen Sunda) -> Tahap 3 (~3.6s - 5.6s Kupu-Kupu) */
     .nature-motion-layer{
       position:fixed;
       inset:0;
@@ -97,19 +97,18 @@
       width:230px;
       height:230px;
       opacity:0;
-      transform:scale(0.72);
-      transition:opacity 0.75s ease, transform 0.85s cubic-bezier(.22,1,.36,1);
+      transform:scale(0.75);
+      transition:opacity 1.35s ease, transform 1.45s cubic-bezier(.22,1,.36,1);
     }
-    /* Tahap 2 dimulai pada 0.45s - 0.85s setelah Buka Uleman diklik */
-    .foliage-tl{top:-12px;left:-12px;transition-delay:.45s}
-    .foliage-tr{top:-12px;right:-12px;transform:scale(0.72) scaleX(-1);transition-delay:.55s}
-    .foliage-bl{bottom:-12px;left:-12px;transform:scale(0.72) scaleY(-1);transition-delay:.65s}
-    .foliage-br{bottom:-12px;right:-12px;transform:scale(0.72) scale(-1,-1);transition-delay:.75s}
+    .foliage-tl{top:-12px;left:-12px;transition-delay:1.80s}
+    .foliage-tr{top:-12px;right:-12px;transform:scale(0.75) scaleX(-1);transition-delay:2.10s}
+    .foliage-bl{bottom:-12px;left:-12px;transform:scale(0.75) scaleY(-1);transition-delay:2.40s}
+    .foliage-br{bottom:-12px;right:-12px;transform:scale(0.75) scale(-1,-1);transition-delay:2.70s}
 
-    .is-invited .foliage-tl{opacity:.88;transform:scale(1);animation:foliageSwayTL 8s ease-in-out 1.3s infinite alternate}
-    .is-invited .foliage-tr{opacity:.88;transform:scale(1) scaleX(-1);animation:foliageSwayTR 9s ease-in-out 1.4s infinite alternate}
-    .is-invited .foliage-bl{opacity:.88;transform:scale(1) scaleY(-1);animation:foliageSwayBL 8.5s ease-in-out 1.5s infinite alternate}
-    .is-invited .foliage-br{opacity:.88;transform:scale(1) scale(-1,-1);animation:foliageSwayBR 9.5s ease-in-out 1.6s infinite alternate}
+    .is-invited .foliage-tl{opacity:.88;transform:scale(1);animation:foliageSwayTL 9s ease-in-out 3.3s infinite alternate}
+    .is-invited .foliage-tr{opacity:.88;transform:scale(1) scaleX(-1);animation:foliageSwayTR 10s ease-in-out 3.6s infinite alternate}
+    .is-invited .foliage-bl{opacity:.88;transform:scale(1) scaleY(-1);animation:foliageSwayBL 9.5s ease-in-out 3.9s infinite alternate}
+    .is-invited .foliage-br{opacity:.88;transform:scale(1) scale(-1,-1);animation:foliageSwayBR 10.5s ease-in-out 4.2s infinite alternate}
 
     @keyframes foliageSwayTL{from{transform:scale(1) rotate(-2deg) translateY(0)}to{transform:scale(1) rotate(2.5deg) translateY(5px)}}
     @keyframes foliageSwayTR{from{transform:scale(1) scaleX(-1) rotate(-2deg)}to{transform:scale(1) scaleX(-1) rotate(2.5deg) translateY(5px)}}
@@ -123,14 +122,14 @@
       height:165px;
       opacity:0;
       transform:translateY(-26px);
-      transition:opacity 0.75s ease .85s, transform 0.85s cubic-bezier(.22,1,.36,1) .85s;
+      transition:opacity 1.35s ease 2.95s, transform 1.45s cubic-bezier(.22,1,.36,1) 2.95s;
     }
     .melati-left{left:14%}
     .melati-right{right:14%}
     .is-invited .melati-strand{
       opacity:.9;
       transform:translateY(0);
-      animation:melatiSwing 6.5s ease-in-out 1.7s infinite alternate;
+      animation:melatiSwing 7.5s ease-in-out 4.4s infinite alternate;
       transform-origin:top center;
     }
     @keyframes melatiSwing{
@@ -138,19 +137,19 @@
       to{transform:rotate(2.5deg)}
     }
 
-    /* Tahap 3: Kupu-Kupu Menyusul pada 1.1s - 1.55s setelah ornamen Sunda hadir */
+    /* Tahap 3 (~3.6s - 5.6s): Kupu-Kupu Menyusul Santai Setelah Ornamen Sunda Hadir */
     .butterfly{
       position:absolute;
       width:32px;
       height:32px;
       opacity:0;
-      transform:scale(0.6);
-      transition:opacity 0.7s ease, transform 0.7s ease;
+      transform:scale(0.65);
+      transition:opacity 1.35s ease, transform 1.35s ease;
     }
-    .is-invited .butterfly-1{opacity:.92;transform:scale(1);transition-delay:1.10s;animation:butterflyPath1 18s ease-in-out 1.7s infinite}
-    .is-invited .butterfly-2{opacity:.92;transform:scale(1);transition-delay:1.25s;animation:butterflyPath2 22s ease-in-out 1.85s infinite}
-    .is-invited .butterfly-3{opacity:.92;transform:scale(1);transition-delay:1.40s;animation:butterflyPath3 20s ease-in-out 2.0s infinite}
-    .is-invited .butterfly-4{opacity:.92;transform:scale(1);transition-delay:1.55s;animation:butterflyPath4 24s ease-in-out 2.15s infinite}
+    .is-invited .butterfly-1{opacity:.92;transform:scale(1);transition-delay:3.60s;animation:butterflyPath1 22s ease-in-out 4.9s infinite}
+    .is-invited .butterfly-2{opacity:.92;transform:scale(1);transition-delay:4.10s;animation:butterflyPath2 26s ease-in-out 5.4s infinite}
+    .is-invited .butterfly-3{opacity:.92;transform:scale(1);transition-delay:4.60s;animation:butterflyPath3 24s ease-in-out 5.9s infinite}
+    .is-invited .butterfly-4{opacity:.92;transform:scale(1);transition-delay:5.10s;animation:butterflyPath4 28s ease-in-out 6.4s infinite}
 
     .butterfly-1{top:18%;left:12%}
     .butterfly-2{top:32%;right:14%}
@@ -159,7 +158,7 @@
 
     .butterfly svg{
       width:100%;height:100%;
-      animation:wingFlap .38s ease-in-out infinite alternate;
+      animation:wingFlap .46s ease-in-out infinite alternate;
       filter:drop-shadow(0 3px 6px rgba(0,0,0,.35));
     }
     @keyframes wingFlap{
@@ -191,17 +190,17 @@
     .scroll-fade{
       opacity:0;
       transform:translateY(22px);
-      transition:opacity 0.9s cubic-bezier(.22,1,.36,1), transform 0.9s cubic-bezier(.22,1,.36,1);
+      transition:opacity 1.05s cubic-bezier(.22,1,.36,1), transform 1.05s cubic-bezier(.22,1,.36,1);
       will-change:opacity, transform;
     }
     .scroll-fade.is-visible{
       opacity:1;
       transform:translateY(0);
     }
-    .delay-1{transition-delay:.08s}
-    .delay-2{transition-delay:.20s}
-    .delay-3{transition-delay:.32s}
-    .delay-4{transition-delay:.44s}
+    .delay-1{transition-delay:.12s}
+    .delay-2{transition-delay:.28s}
+    .delay-3{transition-delay:.44s}
+    .delay-4{transition-delay:.60s}
 
     .batik-line{display:flex;align-items:center;justify-content:center;gap:13px;color:var(--light-gold)}
     .batik-line:before,.batik-line:after{content:"";width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--light-gold))}
@@ -274,7 +273,7 @@
     .sunda-popup-ornament{
       opacity:0;
       transform:scale(0.55) translateY(10px);
-      transition:transform .85s cubic-bezier(.22,1.25,.36,1), opacity .75s ease;
+      transition:transform .9s cubic-bezier(.22,1.25,.36,1), opacity .8s ease;
     }
     .closing-showcase.is-visible .sunda-popup-ornament{
       opacity:1;
@@ -287,7 +286,7 @@
       color:var(--light-gold);
       opacity:0;
       transform:scale(0.4);
-      transition:transform .9s cubic-bezier(.22,1.3,.36,1) .15s, opacity .8s ease .15s;
+      transition:transform .95s cubic-bezier(.22,1.3,.36,1) .15s, opacity .85s ease .15s;
       pointer-events:none;
     }
     .closing-showcase.is-visible .sunda-popup-corner{
@@ -305,7 +304,7 @@
     .closing-fade-text{
       opacity:0;
       transform:translateY(14px);
-      transition:opacity .95s ease .25s, transform .95s ease .25s;
+      transition:opacity 1s ease .25s, transform 1s ease .25s;
     }
     .closing-showcase.is-visible .closing-fade-text{
       opacity:1;
@@ -340,14 +339,14 @@
     .envelope-overlay{
       position:fixed;z-index:60;inset:0;display:grid;place-items:start center;padding:22px;
       background:linear-gradient(145deg,rgba(28,44,31,.96),rgba(24,35,26,.98));
-      transition:opacity .75s ease,visibility .75s ease;
+      transition:opacity .9s ease,visibility .9s ease;
     }
     .envelope-overlay.is-open{opacity:0;visibility:hidden;pointer-events:none}
     .envelope{width:min(460px,100%);padding:12px;background:repeating-linear-gradient(45deg,rgba(194,155,83,.22) 0 10px,transparent 10px 22px),#364c38;box-shadow:0 30px 80px rgba(0,0,0,.45);border:1px solid var(--gold)}
     .envelope-letter{
       min-height:390px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:38px 28px;text-align:center;
       background:radial-gradient(circle at 50% 10%,rgba(194,155,83,.25),transparent 12rem),var(--paper);border:1px solid rgba(44,76,49,.3);
-      transition:transform .65s cubic-bezier(.22,1,.36,1),opacity .35s ease;
+      transition:transform .8s cubic-bezier(.22,1,.36,1),opacity .45s ease;
     }
     .envelope-overlay.is-opening .envelope-letter{transform:translateY(-160px);opacity:0}
     .form-field{width:100%;border:1px solid rgba(44,76,49,.4);border-radius:4px;padding:12px 13px;color:var(--ink);background:rgba(255,253,249,.95)}
@@ -388,36 +387,45 @@
 
   <div id="pageShell" class="page-shell">
 
-   <!-- Tahap 1: Tirai Batik Mega Mendung Berpola Awan Berlapis (Memudar & Bergeser Halus) -->
+   <!-- Tahap 1 (~0s - 2.2s): Tirai Batik Mega Mendung Klasik Berkontur Tegas -->
    <div id="openingMotionCurtain" class="opening-motion-curtain" aria-hidden="true">
-     <svg class="megamendung-svg" viewBox="0 0 400 760" preserveAspectRatio="xMidYMid slice" fill="none">
+     <svg class="megamendung-svg" viewBox="0 0 420 760" preserveAspectRatio="xMidYMid slice" fill="none">
        <defs>
-         <pattern id="megaMendungPattern" width="200" height="190" patternUnits="userSpaceOnUse">
-           <rect width="200" height="190" fill="#36261c"/>
-           <!-- Lapisan terluar awan megamendung -->
-           <path d="M-20 75 C10 15, 78 10, 104 46 C128 8, 192 14, 212 68 C225 102, 188 128, 152 114 C132 106, 128 84, 144 76 C158 69, 172 80, 165 92 C160 100, 148 98, 149 90 C150 85, 156 85, 156 89 C120 96, 95 128, 52 124 C6 120, -32 105, -20 75 Z" fill="#dfca97"/>
-           <!-- Lapisan tengah cokelat muda -->
-           <path d="M-12 75 C14 24, 74 20, 99 54 C122 18, 182 24, 200 72 C210 99, 178 119, 148 107 C134 101, 132 85, 145 79 C156 74, 166 82, 161 91 C157 96, 150 95, 151 90 C118 93, 92 120, 54 116 C14 112, -22 100, -12 75 Z" fill="#8b6343"/>
-           <!-- Lapisan dalam cokelat kayu -->
-           <path d="M-4 76 C18 33, 70 30, 94 61 C116 29, 172 34, 188 76 C196 97, 170 111, 144 101 C135 97, 135 86, 146 82 C154 79, 161 85, 157 90 C115 90, 89 112, 56 109 C22 106, -12 95, -4 76 Z" fill="#593e30"/>
-           <!-- Inti awan megamendung -->
-           <path d="M4 77 C22 42, 66 40, 89 68 C110 40, 162 44, 176 80 C182 95, 162 104, 141 96 C112 87, 86 104, 58 102 C30 100, -2 90, 4 77 Z" fill="#c29b53" opacity="0.55"/>
+         <pattern id="megaMendungKlasik" width="210" height="210" patternUnits="userSpaceOnUse">
+           <rect width="210" height="210" fill="#2c4c31"/>
+           <!-- Awan Mega Mendung Utama (Bentuk Ikal & Ekor Lancip Berlapis seperti Referensi) -->
+           <g stroke="#fffdf9" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+             <!-- Lapisan 1 (Terluar - Krem) -->
+             <path d="M-15 84 C12 48, 52 50, 72 68 C74 44, 102 32, 124 46 C144 58, 138 84, 118 88 C104 91, 96 78, 106 69 C113 63, 122 68, 119 75 C117 80, 110 79, 111 74 C146 66, 178 44, 212 36 C194 64, 174 88, 138 102 C110 113, 86 128, 54 126 C22 124, -10 110, -24 94 Z" fill="#f2ede1"/>
+             <!-- Lapisan 2 (Emas Lembut) -->
+             <path d="M-8 85 C15 54, 50 56, 69 72 C72 51, 98 40, 118 52 C135 62, 130 83, 114 86 C103 88, 97 78, 105 71 C111 66, 118 70, 116 75 C145 69, 173 50, 200 43 C184 67, 166 88, 134 100 C108 110, 86 122, 56 120 C27 118, -2 106, -15 92 Z" fill="#dfca97"/>
+             <!-- Lapisan 3 (Cokelat Emas) -->
+             <path d="M0 86 C19 60, 48 62, 66 76 C70 58, 94 48, 112 58 C126 66, 122 82, 110 84 C102 85, 98 78, 104 73 C139 69, 164 55, 187 49 C173 70, 157 88, 129 98 C105 107, 85 116, 58 114 C32 112, 6 102, -6 90 Z" fill="#c29b53"/>
+             <!-- Lapisan 4 (Cokelat Kayu) -->
+             <path d="M8 87 C23 66, 46 68, 63 80 C68 65, 90 56, 105 64 C117 70, 114 81, 106 82 C133 72, 155 61, 173 56 C161 73, 147 88, 123 96 C102 103, 84 110, 60 108 C38 106, 14 98, 4 89 Z" fill="#593e30"/>
+             <!-- Lapisan 5 (Inti Cokelat Tua) -->
+             <path d="M16 88 C28 72, 45 74, 60 83 C66 71, 86 64, 98 70 C124 75, 144 67, 158 63 C148 76, 136 88, 117 94 C98 100, 82 104, 62 102 C43 100, 22 94, 14 89 Z" fill="#36261c"/>
 
-           <!-- Baris awan megamendung kedua (offset horizontal) -->
-           <path d="M-120 170 C-90 110, -22 105, 4 141 C28 103, 92 109, 112 163 C125 197, 88 223, 52 209 C32 201, 28 179, 44 171 C58 164, 72 175, 65 187 C60 195, 48 193, 49 185 C20 191, -5 223, -48 219 C-94 215, -132 200, -120 170 Z" fill="#dfca97"/>
-           <path d="M-112 170 C-86 119, -26 115, -1 149 C22 113, 82 119, 100 167 C110 194, 78 214, 48 202 C34 196, 32 180, 45 174 C56 169, 66 177, 61 186 C57 191, 50 190, 51 185 C18 188, -8 215, -46 211 C-86 207, -122 195, -112 170 Z" fill="#8b6343"/>
-           <path d="M-104 171 C-82 128, -30 125, -6 156 C16 124, 72 129, 88 171 C96 192, 70 206, 44 196 C35 192, 35 181, 46 177 C54 174, 61 180, 57 185 C15 185, -11 207, -44 204 C-78 201, -112 190, -104 171 Z" fill="#593e30"/>
+             <!-- Sulur Bawah Mega Mendung -->
+             <path d="M64 126 C68 142, 62 158, 48 162 C38 165, 30 156, 35 147 C39 140, 48 143, 46 150 C54 148, 56 136, 52 126 Z" fill="#dfca97"/>
+             <path d="M60 126 C63 139, 58 152, 47 156 C40 158, 35 152, 38 146 C46 146, 51 137, 49 126 Z" fill="#593e30"/>
 
-           <path d="M80 170 C110 110, 178 105, 204 141 C228 103, 292 109, 312 163 C325 197, 288 223, 252 209 C232 201, 228 179, 244 171 C258 164, 272 175, 265 187 C260 195, 248 193, 249 185 C220 191, 195 223, 152 219 C106 215, 68 200, 80 170 Z" fill="#dfca97"/>
-           <path d="M88 170 C114 119, 174 115, 199 149 C222 113, 282 119, 300 167 C310 194, 278 214, 248 202 C234 196, 232 180, 245 174 C256 169, 266 177, 261 186 C257 191, 250 190, 251 185 C218 188, 192 215, 154 211 C114 207, 78 195, 88 170 Z" fill="#8b6343"/>
-           <path d="M96 171 C118 128, 170 125, 194 156 C216 124, 272 129, 288 171 C296 192, 270 206, 244 196 C235 192, 235 181, 246 177 C254 174, 261 180, 257 185 C215 185, 189 207, 156 204 C122 201, 88 190, 96 171 Z" fill="#593e30"/>
+             <!-- Awan Mega Mendung Kedua (Offset Diagonal) -->
+             <path d="M-120 189 C-93 153, -53 155, -33 173 C-31 149, -3 137, 19 151 C39 163, 33 189, 13 193 C-1 196, -9 183, 1 174 C8 168, 17 173, 14 180 C41 171, 73 149, 107 141 C89 169, 69 193, 33 207 C5 218, -19 233, -51 231 C-83 229, -115 215, -129 199 Z" fill="#f2ede1"/>
+             <path d="M-113 190 C-90 159, -55 161, -36 177 C-33 156, -7 145, 13 157 C30 167, 25 188, 9 191 C-2 193, -8 183, 0 176 C40 174, 68 155, 95 148 C79 172, 61 193, 29 205 C3 215, -19 227, -49 225 C-78 223, -107 211, -120 197 Z" fill="#dfca97"/>
+             <path d="M-105 191 C-86 165, -57 167, -39 181 C-35 163, -11 153, 7 163 C21 171, 17 187, 5 189 C34 174, 59 160, 82 154 C68 175, 52 193, 24 203 C0 212, -20 221, -47 219 C-73 217, -99 207, -111 195 Z" fill="#593e30"/>
+
+             <path d="M90 189 C117 153, 157 155, 177 173 C179 149, 207 137, 229 151 C249 163, 243 189, 223 193 C209 196, 201 183, 211 174 C218 168, 227 173, 224 180 C251 171, 283 149, 317 141 C299 169, 279 193, 243 207 C215 218, 191 233, 159 231 C127 229, 95 215, 81 199 Z" fill="#f2ede1"/>
+             <path d="M97 190 C120 159, 155 161, 174 177 C177 156, 203 145, 223 157 C240 167, 235 188, 219 191 C208 193, 202 183, 210 176 C250 174, 278 155, 305 148 C289 172, 271 193, 239 205 C213 215, 191 227, 161 225 C132 223, 103 211, 90 197 Z" fill="#dfca97"/>
+             <path d="M105 191 C124 165, 153 167, 171 181 C175 163, 199 153, 217 163 C231 171, 227 187, 215 189 C244 174, 269 160, 292 154 C278 175, 262 193, 234 203 C210 212, 190 221, 163 219 C137 217, 111 207, 99 195 Z" fill="#593e30"/>
+           </g>
          </pattern>
        </defs>
-       <rect width="400" height="760" fill="url(#megaMendungPattern)"/>
+       <rect width="420" height="760" fill="url(#megaMendungKlasik)"/>
      </svg>
    </div>
 
-   <!-- Layer Motion Bertahap: Tahap 2 (Ornamen Sunda) -> Tahap 3 (Kupu-Kupu) -->
+   <!-- Layer Motion Santai: Tahap 2 (Ornamen Sunda) -> Tahap 3 (Kupu-Kupu) -->
    <div class="nature-motion-layer" aria-hidden="true">
      <!-- Ornamen Dedaunan & Bunga Kiri Atas -->
      <svg class="foliage-corner foliage-tl" viewBox="0 0 200 200" fill="none">
@@ -848,10 +856,10 @@
         }
       }
 
-      /* Urutan Motion Bertahap:
-         1. Tirai Mega Mendung & background memudar/bergeser halus (0.0s - 0.95s)
-         2. Ornamen Sunda & Ronce Melati muncul (0.45s - 1.1s)
-         3. Kupu-Kupu terbang menyusul (1.1s - 1.55s) */
+      /* Urutan Motion Santai (~4.5 - 6 detik total):
+         1. Tirai Mega Mendung & background memudar santai (0.0s - 2.2s)
+         2. Ornamen Sunda & Ronce Melati muncul perlahan (1.8s - 3.8s)
+         3. Kupu-Kupu terbang menyusul santai (3.6s - 5.6s) */
       function openInvitation() {
         const overlay = byId("envelopeOverlay");
         const shell = byId("pageShell");
@@ -880,8 +888,8 @@
             if (curtain) {
               curtain.classList.add("is-done");
             }
-          }, 950);
-        }, 280);
+          }, 1900);
+        }, 380);
       }
 
       function updateCountdown() {
