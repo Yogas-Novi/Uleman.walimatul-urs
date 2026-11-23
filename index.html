@@ -8,18 +8,19 @@
 
   <!-- Open Graph & Thumbnail Preview untuk WhatsApp -->
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yogas-novi.github.io/Uleman.walimatul-urs/">
   <meta property="og:title" content="The Wedding of Yogas &amp; Novi">
   <meta property="og:description" content="Uleman Pernikahan Yogas &amp; Novi · Saptu, 12 Désémber 2026 · Sukahaji, Ciasem, Subang.">
-  <meta property="og:image" content="https://files.catbox.moe/wleyig.png">
-  <meta property="og:image:secure_url" content="https://files.catbox.moe/wleyig.png">
+  <meta property="og:image" content="https://yogas-novi.github.io/Uleman.walimatul-urs/Tubnailyogasnovi.png">
+  <meta property="og:image:secure_url" content="https://yogas-novi.github.io/Uleman.walimatul-urs/Tubnailyogasnovi.png">
   <meta property="og:image:type" content="image/png">
-  <meta property="og:image:alt" content="Foto Undangan Pernikahan Yogas &amp; Novi">
+  <meta property="og:image:alt" content="Thumbnail Undangan Pernikahan Yogas &amp; Novi">
 
   <!-- Twitter / Preview Card Fallback -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Wedding of Yogas &amp; Novi">
   <meta name="twitter:description" content="Uleman Pernikahan Yogas &amp; Novi · Saptu, 12 Désémber 2026.">
-  <meta name="twitter:image" content="https://files.catbox.moe/wleyig.png">
+  <meta name="twitter:image" content="https://yogas-novi.github.io/Uleman.walimatul-urs/Tubnailyogasnovi.png">
 
   <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700&amp;family=Libre+Franklin:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;display=swap" rel="stylesheet">
   <!-- Deteksi parameter ?to= sejak awal sebelum render agar bar pembuat link tidak muncul sekilas saat dibuka tamu -->
@@ -68,7 +69,7 @@
     .display-font{font-family:"Playfair Display",serif}
     .title-font{font-family:"Eczar",serif}
 
-    /* Tahap 1: Tirai Mega Mendung dari ./images (1).jpeg dengan Transisi Landai & Menyatu */
+    /* Tahap 1: Tirai Pembuka Utuh ./Tiraihijau.jpg dengan Transisi Landai & Menyatu */
     .opening-motion-curtain{
       position:fixed;
       inset:0;
@@ -90,28 +91,29 @@
     }
     .megamendung-photo-layer{
       position:absolute;
-      inset:-6%;
-      width:112%;
-      height:112%;
-      background-image:url("./images (1).jpeg");
-      background-size:320px 320px;
-      background-repeat:repeat;
+      inset:0;
+      width:100%;
+      height:100%;
+      background-image:url("./Tiraihijau.jpg");
+      background-size:cover;
+      background-repeat:no-repeat;
+      background-position:center;
       transform:scale(1.02) translate3d(0,0,0);
       transition:transform 2.9s cubic-bezier(.22,1,.36,1), opacity 2.35s cubic-bezier(.22,1,.36,1);
     }
     .opening-motion-curtain.is-playing .megamendung-photo-layer{
-      transform:scale(1.05) translate3d(0,-10px,0);
+      transform:scale(1.05) translate3d(0,-8px,0);
     }
     .opening-motion-curtain.is-done .megamendung-photo-layer{
-      transform:scale(1.12) translate3d(0,-24px,0);
+      transform:scale(1.1) translate3d(0,-18px,0);
       opacity:0;
     }
     .megamendung-palette-blend{
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at 50% 45%, rgba(242, 237, 225, 0.08), rgba(54, 38, 28, 0.36) 72%, rgba(34, 26, 22, 0.56) 100%),
-        linear-gradient(180deg, rgba(44, 76, 49, 0.24) 0%, rgba(89, 62, 48, 0.26) 100%);
+        radial-gradient(circle at 50% 45%, rgba(242, 237, 225, 0.06), rgba(54, 38, 28, 0.34) 72%, rgba(34, 26, 22, 0.54) 100%),
+        linear-gradient(180deg, rgba(44, 76, 49, 0.22) 0%, rgba(89, 62, 48, 0.24) 100%);
     }
 
     /* Layer Motion Santai: Tahap 2 (Ornamen Sunda & Bingkai Oval) -> Tahap 3 (Kupu-Kupu) */
@@ -460,7 +462,7 @@
    <!-- Bingkai Oval Lembut di Latar Belakang -->
    <div class="oval-backdrop-frame" aria-hidden="true"></div>
 
-   <!-- Tahap 1: Tirai Mega Mendung dari ./images (1).jpeg dengan Transisi Landai -->
+   <!-- Tahap 1: Tirai Pembuka Utuh ./Tiraihijau.jpg dengan Transisi Landai -->
    <div id="openingMotionCurtain" class="opening-motion-curtain" aria-hidden="true">
      <div class="megamendung-photo-layer"></div>
      <div class="megamendung-palette-blend"></div>
