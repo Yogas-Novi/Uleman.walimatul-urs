@@ -37,8 +37,8 @@
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;color:var(--ink);font-family:"Libre Franklin",sans-serif;background:#221a16;-webkit-tap-highlight-color:transparent}
-    button,input,textarea{font:inherit}
-    button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+    button,input,select,textarea{font:inherit}
+    button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 
     /* Langsung sembunyikan bar admin dan rapikan posisi amplop jika URL memiliki parameter ?to= */
     html.has-guest-param #adminLinkBuilder{display:none !important}
@@ -327,6 +327,26 @@
       border-radius:6px;
       text-align:center;
       box-shadow:0 8px 22px rgba(0,0,0,.2);
+    }
+
+    /* Daftar Wishes / Harapan Bahasa Sunda yang Ringan di HP */
+    .wish-item{
+      border:1px solid rgba(194,155,83,.38);
+      background:rgba(255,253,249,.97);
+      border-radius:6px;
+      padding:14px 16px;
+      text-align:left;
+      box-shadow:0 6px 16px rgba(0,0,0,.14);
+    }
+    .wish-badge{
+      display:inline-block;
+      font-size:11px;
+      font-weight:600;
+      padding:2px 9px;
+      border-radius:999px;
+      background:rgba(44,76,49,.12);
+      color:var(--leaf);
+      border:1px solid rgba(44,76,49,.25);
     }
 
     /* Dekorasi Pop-Up Adat Sunda & Teks Penutup */
@@ -738,6 +758,46 @@
       </div>
      </section>
 
+     <!-- Bagian Wishes / Pidua & Harapan Bahasa Sunda Terhubung ke Google Sheets -->
+     <section class="carving-border px-5 py-20 text-white">
+      <div class="mx-auto max-w-2xl text-center">
+       <div class="scroll-fade delay-1">
+         <p class="text-xs font-semibold uppercase tracking-[.31em]" style="color: rgb(223, 202, 151);">Pidua &amp; Harapan</p>
+         <h2 class="display-font mt-3 text-white" style="font-size: 21px; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">Wishes Kanggo Yogas &amp; Novi</h2>
+         <p class="mx-auto mt-4 max-w-xl text-sm leading-7 text-white/95">Mangga kintun pidua, pangéling, atanapi kabingahan basa Sunda kanggo pangantén.</p>
+       </div>
+
+       <form id="wishForm" class="scroll-fade delay-2 sunda-frame mt-8 p-6 sm:p-8 text-left space-y-4" style="background: rgba(255,253,249,.96);">
+         <div>
+           <label for="wishName" class="block text-xs font-semibold uppercase tracking-[.15em] text-[#2c4c31] mb-1.5">Nami Anjeun</label>
+           <input id="wishName" name="nami" type="text" maxlength="80" required placeholder="Conto: Kang Deden / Néng Rina" class="form-field text-sm">
+         </div>
+         <div>
+           <label for="wishAttendance" class="block text-xs font-semibold uppercase tracking-[.15em] text-[#2c4c31] mb-1.5">Kahadiran</label>
+           <select id="wishAttendance" name="kahadiran" class="form-field text-sm">
+             <option value="Sumping (Hadir)">Sumping (Hadir)</option>
+             <option value="Insya Allah Sumping">Insya Allah Sumping</option>
+             <option value="Hapunten Teu Tiasa Sumping">Hapunten Teu Tiasa Sumping</option>
+           </select>
+         </div>
+         <div>
+           <label for="wishMessage" class="block text-xs font-semibold uppercase tracking-[.15em] text-[#2c4c31] mb-1.5">Pidua &amp; Ucapan Basa Sunda</label>
+           <textarea id="wishMessage" name="ucapan" rows="3" maxlength="360" required placeholder="Mugi janten kulawarga sakinah, mawadah, warahmah, runtut raut sauyunan..." class="form-field text-sm"></textarea>
+         </div>
+         <div class="pt-1 flex flex-col items-center">
+           <button id="submitWishBtn" type="submit" class="sunda-button rounded-full px-7 py-3 text-sm font-semibold">Kintun Ucapan</button>
+           <p id="wishStatus" class="status mt-3 text-center font-semibold text-[#2c4c31]" aria-live="polite"></p>
+         </div>
+       </form>
+
+       <div class="scroll-fade delay-3 mt-8">
+         <div id="wishesList" class="space-y-3" aria-live="polite">
+           <p class="text-sm text-[#dfca97]">Nuju ngamuat pidua ti para tamu...</p>
+         </div>
+       </div>
+      </div>
+     </section>
+
      <section class="carving-border px-5 py-20 text-white">
       <div class="mx-auto max-w-3xl text-center">
 
@@ -837,6 +897,7 @@
       const weddingDate = new Date("2026-12-12T08:00:00+07:00");
       const mapUrl = "https://www.google.com/maps/search/?api=1&query=-6.3138109,107.5845435";
       const giftWaNumber = "6289669369352";
+      const wishesEndpoint = "https://script.google.com/macros/s/AKfycbxqv0npghxdiZUMhducL9IGV7CbKwTPACul5NuNTRc6oGvWNbn5Afqvr9ivmREnqf5d/exec";
 
       const params = new URLSearchParams(window.location.search);
       const hasGuestParam = params.has("to");
@@ -849,6 +910,10 @@
         const input = byId("guestName");
         setText("guestGreeting", "Kahatur Bapa/Ibu/Sadérék");
         if (input) input.value = initialGuestName;
+        const wishNameInput = byId("wishName");
+        if (wishNameInput && initialGuestName && !wishNameInput.value) {
+          wishNameInput.value = initialGuestName.split("-")[0].trim();
+        }
       }
 
       function setupAdminBuilder() {
@@ -967,6 +1032,115 @@
         }
       }
 
+      function createWishCard(item) {
+        const card = document.createElement("article");
+        card.className = "wish-item";
+
+        const topRow = document.createElement("div");
+        topRow.className = "flex flex-wrap items-center justify-between gap-2";
+
+        const nameEl = document.createElement("strong");
+        nameEl.className = "text-sm font-semibold text-[#2c4c31]";
+        nameEl.textContent = item.nami || "Tamu Uleman";
+
+        const badgeEl = document.createElement("span");
+        badgeEl.className = "wish-badge";
+        badgeEl.textContent = item.kahadiran || "Pidua";
+
+        topRow.appendChild(nameEl);
+        topRow.appendChild(badgeEl);
+
+        const msgEl = document.createElement("p");
+        msgEl.className = "mt-2 text-sm leading-6 text-[#221a16]";
+        msgEl.textContent = item.ucapan || "";
+
+        card.appendChild(topRow);
+        card.appendChild(msgEl);
+
+        if (item.waktu) {
+          const timeEl = document.createElement("p");
+          timeEl.className = "mt-1.5 text-[11px] text-[#593e30]";
+          timeEl.textContent = item.waktu;
+          card.appendChild(timeEl);
+        }
+
+        return card;
+      }
+
+      function renderWishes(list) {
+        const container = byId("wishesList");
+        if (!container) return;
+        container.innerHTML = "";
+
+        const visibleItems = Array.isArray(list) ? list.slice(0, 25) : [];
+        if (!visibleItems.length) {
+          const emptyMsg = document.createElement("p");
+          emptyMsg.className = "text-sm text-[#dfca97]";
+          emptyMsg.textContent = "Teu acan aya ucapan. Mangga janten nu kahiji ngintun pidua.";
+          container.appendChild(emptyMsg);
+          return;
+        }
+
+        const fragment = document.createDocumentFragment();
+        visibleItems.forEach(item => fragment.appendChild(createWishCard(item)));
+        container.appendChild(fragment);
+      }
+
+      async function loadWishes() {
+        const container = byId("wishesList");
+        try {
+          const res = await fetch(`${wishesEndpoint}?t=${Date.now()}`, { cache: "no-store" });
+          const json = await res.json();
+          if (json && json.ok && Array.isArray(json.data)) {
+            renderWishes(json.data);
+          } else if (container) {
+            container.innerHTML = `<p class="text-sm text-[#dfca97]">Ucapan tiasa dikintun di luhur.</p>`;
+          }
+        } catch (_) {
+          if (container) {
+            container.innerHTML = `<p class="text-sm text-[#dfca97]">Nuju nyambungkeun daptar pidua...</p>`;
+          }
+        }
+      }
+
+      async function handleWishSubmit(event) {
+        event.preventDefault();
+        const nameInput = byId("wishName");
+        const attendanceSelect = byId("wishAttendance");
+        const messageInput = byId("wishMessage");
+        const submitBtn = byId("submitWishBtn");
+
+        const nami = nameInput ? nameInput.value.trim() : "";
+        const kehadiran = attendanceSelect ? attendanceSelect.value : "";
+        const ucapan = messageInput ? messageInput.value.trim() : "";
+
+        if (!nami || !ucapan) {
+          setText("wishStatus", "Mangga lebetkeun nami sareng piduana heula.");
+          return;
+        }
+
+        if (submitBtn) submitBtn.disabled = true;
+        setText("wishStatus", "Nuju ngintun pidua...");
+
+        try {
+          await fetch(wishesEndpoint, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify({ nami, kehadiran, ucapan })
+          });
+
+          if (messageInput) messageInput.value = "";
+          setText("wishStatus", "Hatur nuhun! Pidua anjeun parantos kakintun.");
+
+          window.setTimeout(loadWishes, 900);
+        } catch (_) {
+          setText("wishStatus", "Hapunten, aya gangguan waktos ngintun pidua.");
+        } finally {
+          if (submitBtn) submitBtn.disabled = false;
+        }
+      }
+
       function showLightbox() {
         const item = document.querySelector("#galleryGrid img");
         if (!item) return;
@@ -1010,7 +1184,11 @@
         setupAdminBuilder();
         setupScrollFadeObserver();
         updateCountdown();
+        loadWishes();
         window.setInterval(updateCountdown,1000);
+
+        const wishForm = byId("wishForm");
+        if (wishForm) wishForm.addEventListener("submit", handleWishSubmit);
 
         byId("openInvitation").addEventListener("click", openInvitation);
         byId("mapButton").addEventListener("click",() => window.open(mapUrl,"_blank","noopener,noreferrer"));
